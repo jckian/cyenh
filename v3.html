@@ -277,6 +277,7 @@
     initVideoObserver();
     initCardTransition();
     initReveal();
+    initHeroHeader();
 
     /* arch / tech filter — dim items not in the active group; toggle off on re-click or logo */
     const feed = document.getElementById('feed');
@@ -291,6 +292,7 @@
         it.classList.toggle('is-match', !!group && cats.includes(it.dataset.cat));
       });
       groupLinks.forEach((a) => a.classList.toggle('is-active', a.dataset.group === group));
+      syncHeroHeader();   /* filtering drops the full-screen opener — the header goes back to white */
     }
 
     groupLinks.forEach((a) => {

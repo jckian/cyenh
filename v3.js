@@ -458,6 +458,28 @@ function initCardTransition() {
   });
 }
 
+/* ---- the full-screen opener runs under the fixed header, so the header drops its
+   white background (and turns white itself) until it scrolls clear of the footage.
+   Filtering the index removes the full-screen treatment, so re-sync on that too. ---- */
+let syncHeroHeader = () => {};
+
+function initHeroHeader() {
+  const head = document.querySelector(".v3head");
+  const hero = document.querySelector('.feed__item[data-n="0"]');
+  const feed = document.querySelector(".feed");
+  if (!head || !hero) return;
+
+  syncHeroHeader = () => {
+    const over = !feed.classList.contains("is-filtered")
+      && hero.getBoundingClientRect().bottom > head.offsetHeight;
+    head.classList.toggle("is-over", over);
+  };
+
+  syncHeroHeader();
+  addEventListener("scroll", syncHeroHeader, { passive: true });
+  addEventListener("resize", syncHeroHeader);
+}
+
 /* ---- video performance: play only while in the viewport ---- */
 function initVideoObserver() {
   const vids = document.querySelectorAll("video[data-lazyplay]");

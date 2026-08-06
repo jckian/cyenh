@@ -48,6 +48,12 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
   z-index: 60;
 }
+/* while the full-screen opener is under it, the header lets the footage through */
+.v3head.is-over {
+  background: transparent;
+  color: #fff;
+}
+.v3head.is-over a { color: #fff; }
 .v3head__label {
   grid-column: 1;
   font-size: 11px;
@@ -152,52 +158,68 @@ a { color: inherit; text-decoration: none; }
 .feed__item:hover .feed__media video { transform: scale(1.02); }
 
 /* deterministic placement (matches elim staggered collage) */
-/* n=0: the lead entry opens the site on a full screen of its own — the collage
-   starts below the fold. The clip runs from a dark night rendering into a light UI
-   capture, so it is never cropped (the UI panels carry the content) and the caption
-   sits below it on page white instead of on top of the footage. */
+/* n=0: the lead entry opens the site full-screen — the collage starts below the fold.
+   The negative margins cancel the feed's padding AND the body's header offset, so the
+   footage runs the full viewport and the header floats on top of it. */
 .feed__item[data-n="0"] {
   grid-column: 1 / -1;
   grid-row: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: -24px calc(var(--edge) * -1) 0;
-  height: calc(100vh - var(--head-h));
+  margin: calc((var(--head-h) + 24px) * -1) calc(var(--edge) * -1) 0;
+  height: 100vh;
 }
-.feed__item[data-n="0"] .feed__media {
-  flex: 1;
-  min-height: 0;
-  background: var(--bg);
-}
+.feed__item[data-n="0"] .feed__media { height: 100%; }
 .feed__item[data-n="0"] .feed__media video {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+}
+/* the header floats over the footage — a soft top scrim keeps it legible */
+.feed__item[data-n="0"] .feed__media::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(var(--head-h) + 50px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .42), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+/* the caption sits on the footage, so it needs a scrim to stay readable */
+.feed__item[data-n="0"] .feed__media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+  pointer-events: none;
 }
 .feed__item[data-n="0"] .feed__cap {
-  margin: 18px 0 0;
-  padding: 0 var(--edge);
+  position: absolute;
+  left: var(--edge);
+  bottom: clamp(30px, 5vh, 58px);
+  z-index: 2;
+  margin: 0;
+  color: #fff;
 }
 .feed__item[data-n="0"] .feed__cap-title {
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: clamp(28px, 3.4vw, 46px);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
+.feed__item[data-n="0"] .feed__cap-cat,
+.feed__item[data-n="0"] .feed__cap-note,
+.feed__item[data-n="0"] .feed__cap-year { color: rgba(255, 255, 255, .8); }
 .feed__item[data-n="0"] .feed__cap-note { font-size: 13px; }
-/* a contained clip is its own frame — the hover zoom would crop it */
-.feed__item[data-n="0"]:hover .feed__media video { transform: none; }
 
 /* there is nothing visible below a full-screen opener — say so */
 .feed__scroll {
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: clamp(24px, 4vh, 40px);
   z-index: 2;
   width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, rgba(25, 25, 25, 0), rgba(25, 25, 25, .6));
+  height: 46px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .85));
   animation: scrollcue 2.2s ease-in-out infinite;
 }
 @keyframes scrollcue {
@@ -271,14 +293,17 @@ a { color: inherit; text-decoration: none; }
 /* the one-line description belongs to the collage, not the tight filtered row */
 .feed.is-filtered .feed__cap-note { display: none; }
 /* the opener's full-screen treatment is home-only — here it is just another card */
-.feed.is-filtered .feed__item[data-n="0"] { display: block; height: auto; margin: 0; }
-.feed.is-filtered .feed__item[data-n="0"] .feed__media { height: auto; background: #f3f3f3; }
-.feed.is-filtered .feed__item[data-n="0"] .feed__cap { margin-top: 10px; padding: 0; }
+.feed.is-filtered .feed__item[data-n="0"] { height: auto; margin: 0; }
+.feed.is-filtered .feed__item[data-n="0"] .feed__media { height: auto; }
+.feed.is-filtered .feed__item[data-n="0"] .feed__media::after { display: none; }
+.feed.is-filtered .feed__item[data-n="0"] .feed__cap { position: static; color: inherit; }
 .feed.is-filtered .feed__item[data-n="0"] .feed__cap-title {
   font-size: inherit;
   font-weight: 500;
   margin-bottom: 0;
 }
+.feed.is-filtered .feed__item[data-n="0"] .feed__cap-cat,
+.feed.is-filtered .feed__item[data-n="0"] .feed__cap-year { color: var(--cap); }
 .feed.is-filtered .feed__scroll { display: none; }
 /* while filtered, the index is the whole page — hide the about + footer below
    it (and their divider lines) */
@@ -787,9 +812,9 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
   }
   /* the opener stays full-screen and full-bleed (svh: no jump when the URL bar hides) */
   .feed:not(.is-filtered) .feed__item[data-n="0"] {
-    margin: -16px calc(var(--edge) * -1) 48px !important;
+    margin: calc((var(--head-h) + 16px) * -1) calc(var(--edge) * -1) 48px !important;
     width: auto;
-    height: calc(100svh - var(--head-h));
+    height: 100svh;
   }
   /* filtered index on small screens: wrap to 2-up instead of one cramped row */
   .feed.is-filtered { flex-wrap: wrap; min-height: 0; align-items: stretch; }
