@@ -240,7 +240,12 @@ const CAT_V3 = {
   "03": "public", "04": "housing", "05": "visual", "hiyou": "visual",
   "sciarc-gala": "event", "archive": "archive"
 };
-const GROUPS_V3 = { arch: ["landscape", "housing", "public"], tech: ["visual", "event", "archive"] };
+const GROUPS_V3 = { arch: ["landscape", "housing", "public"], tech: ["platform", "visual", "event", "archive"] };
+
+/* projects hosted on their own site — no case page here, the index links straight out */
+const EXTERNAL_V3 = [
+  { title: "NEXA", url: "https://jckian.github.io/NEXA/NEXA-site.html" }
+];
 
 /* case-page hero override (empty: the old hiyou entry pointed at
    images/hi-you/clips/HiYou.mp4, which was deleted from disk) */
@@ -260,8 +265,9 @@ function initProjectsIndex() {
     idx = document.createElement("nav");
     idx.className = "idx";
     idx.setAttribute("aria-label", "All projects");
-    idx.innerHTML = ORDER_V3
-      .map((id) => `<a href="${workPage}?p=${id}">${PROJECTS_V3[id].title}</a>`)
+    idx.innerHTML = EXTERNAL_V3
+      .map((p) => `<a href="${p.url}">${p.title}</a>`)
+      .concat(ORDER_V3.map((id) => `<a href="${workPage}?p=${id}">${PROJECTS_V3[id].title}</a>`))
       .join("");
     document.body.appendChild(idx);
   }
@@ -375,7 +381,7 @@ function initCardTransition() {
     document.querySelectorAll(".zoomclone").forEach((c) => c.remove());
   });
 
-  feed.querySelectorAll(".feed__item").forEach((item) => {
+  feed.querySelectorAll(".feed__item:not([data-external])").forEach((item) => {
     item.addEventListener("click", (e) => {
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       if (feed.classList.contains("is-filtered")) return;   /* filtered index has its own layout */
