@@ -61,16 +61,16 @@
       /* hero */
       const heroHTML = `<div class="case3__hero${p.coverFit === 'contain' ? ' case3__hero--contain' : ''}">${isVidV3(hero)
         ? `<video src="${hero}" muted loop playsinline preload="metadata" data-lazyplay></video>`
-        : `<img src="${hero}" alt="${esc(p.title)} — cover">`}</div>`;
+        : `<img src="${hero}" alt="${esc(p.title)}, cover">`}</div>`;
 
       /* metadata row */
       const metaHTML = `
         <div class="case3__meta">
           <div class="case3__meta-left">
             <div class="case3__cat">${esc(p.cat)}</div>
-            ${p.team && p.team !== '—' ? `<div class="case3__role">${esc(p.team)}</div>` : ''}
+            ${p.team ? `<div class="case3__role">${esc(p.team)}</div>` : ''}
             ${p.award ? `<div class="case3__award">${esc(p.award)}</div>` : ''}
-            ${p.role && p.role !== '—' ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
+            ${p.role ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
           </div>
           <div class="case3__meta-main">
             <h1 class="case3__title">${esc(p.title)}</h1>
@@ -81,7 +81,7 @@
           </div>
         </div>`;
 
-      /* intro only — the long `body` essay is omitted to match v2's lean,
+      /* intro only, the long `body` essay is omitted to match v2's lean,
          gallery-first case template */
       let textHTML = '';
       if (p.intro) textHTML += `<p class="case3__intro reveal">${esc(p.intro)}</p>`;
@@ -93,7 +93,7 @@
         <div class="case3__vtop">
           <div class="case3__vtop-info">
             <div class="case3__cat">${esc(p.cat)}</div>
-            ${p.role && p.role !== '—' ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
+            ${p.role ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
             <h1 class="case3__title">${esc(p.title)}</h1>
             <div class="case3__where">
               ${site ? `<span>${esc(site)}</span>` : ''}
@@ -134,7 +134,7 @@
       }
       essayHTML = `<section class="case3__essay">${essayHTML}</section>`;
 
-      /* source code + README — only for projects carrying a `repo`. The README
+      /* source code + README, only for projects carrying a `repo`. The README
          markdown is fetched live from GitHub raw (CORS-open) and rendered by the
          mini converter below, so this stays a single static file, no build step. */
       let repoHTML = '';
@@ -206,7 +206,7 @@
         });
       }
 
-      /* behaviours — the observer first: resumeHeroVideo must seek AFTER the
+      /* behaviours, the observer first: resumeHeroVideo must seek AFTER the
          clip-config listener it would otherwise be overwritten by */
       initVideoObserver();
       const resumedAt = resumeHeroVideo(p.coverPlaylist);
@@ -220,7 +220,7 @@
         else if (e.key === 'ArrowRight') location.href = `v3-work.html?p=${nextId}`;
       });
 
-      /* minimal Markdown → HTML — same converter as work.html: headings,
+      /* minimal Markdown → HTML, same converter as work.html: headings,
          paragraphs, bold/italic/inline-code, links, images, lists, blockquotes,
          rules, fenced code, and GFM pipe tables. Relative image/link paths
          resolve against the repo's raw/blob host. Deliberately dependency-free. */

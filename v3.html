@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yenhsing Cheng · Selected Work</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="Yenhsing Cheng, licensed architect, Taipei / Los Angeles. Selected work in architecture and design technology, 2022–2026." />
+  <meta name="description" content="Yenhsing Cheng, licensed architect, Taipei / Los Angeles. Selected work in architecture and design technology, 2022-2026." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Spectral:ital,wght@1,400&display=swap" rel="stylesheet" />
@@ -154,19 +154,19 @@
           <div>
             <h3>Education</h3>
             <ul>
-              <li>M.S. Architectural Technologies, SCI-Arc, CA (2025–26)</li>
-              <li>M.Arch, NYCU, Taiwan (2021–23)</li>
-              <li>B.Arch, Taiwan Tech, Taiwan (2017–21)</li>
+              <li>M.S. Architectural Technologies, SCI-Arc, CA (2025-26)</li>
+              <li>M.Arch, NYCU, Taiwan (2021-23)</li>
+              <li>B.Arch, Taiwan Tech, Taiwan (2017-21)</li>
               <li>BIM Program, Georgia Tech, GA (2019)</li>
             </ul>
           </div>
           <div>
             <h3>Experience</h3>
             <ul>
-              <li>AI Training BIM Modeler, illoca, CA, Remote (2024–25)</li>
-              <li>Project Manager, Chunghwa Post (2023–25)</li>
-              <li>BIM Engineer / Designer, Arch-Square (2024–25)</li>
-              <li>Architectural Designer, Sumtect (2020–21)</li>
+              <li>AI Training BIM Modeler, illoca, CA, Remote (2024-25)</li>
+              <li>Project Manager, Chunghwa Post (2023-25)</li>
+              <li>BIM Engineer / Designer, Arch-Square (2024-25)</li>
+              <li>Architectural Designer, Sumtect (2020-21)</li>
             </ul>
           </div>
         </div>
@@ -279,7 +279,7 @@
     initReveal();
     initHeroHeader();
 
-    /* arch / tech filter — dim items not in the active group; toggle off on re-click or logo */
+    /* arch / tech filter, dim items not in the active group; toggle off on re-click or logo */
     const feed = document.getElementById('feed');
     const groupLinks = document.querySelectorAll('.v3head__nav a[data-group]');
     let activeGroup = null;
@@ -292,7 +292,7 @@
         it.classList.toggle('is-match', !!group && cats.includes(it.dataset.cat));
       });
       groupLinks.forEach((a) => a.classList.toggle('is-active', a.dataset.group === group));
-      syncHeroHeader();   /* filtering drops the full-screen opener — the header goes back to white */
+      syncHeroHeader();   /* filtering drops the full-screen opener, the header goes back to white */
     }
 
     groupLinks.forEach((a) => {
