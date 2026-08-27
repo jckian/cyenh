@@ -290,6 +290,7 @@ function initProjectsIndex() {
 
 /* per-clip playback: skip a slow lead-in (start, in seconds) and/or speed it up (rate) */
 const CLIP_CFG_V3 = {
+  "images/NEXA/nexa-wide-16x9-v4.mp4": { start: 2, rate: 1.5 },
   "images/VORO/VORO-video.mp4": { start: 4 },
   "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯.mp4": { start: 18, rate: 1.5 },
   "images/sciarc-gala/SCIArcGalaFinalVideo.mp4": { start: 15 }
