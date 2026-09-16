@@ -11,7 +11,7 @@ const PROJECTS_V3 = {
     role: "System design, computational workflow, real-time 3D front-end",
     client: "SCI-Arc · independent study",
     services: "Generative design, computational massing, structural synthesis, real-time 3D",
-    intro: "An interactive 3D design system for early-stage architectural synthesis, integrating program, massing, and structure in a single workflow.",
+    intro: "VORO is a browser-based design tool that develops program, massing, and structure together. It gives designers early feedback on spatial and structural decisions before the project moves into detailed modelling.",
     body: "VORO translates a design brief into a structured, buildable model. Given a precedent and a site constraint, the system generates a floor-by-floor program, evaluates it against massing typologies (cube, tower, slab, courtyard), and resolves a corresponding structural system: internal frame with curtain wall, structural skin, or structural foam. All outputs are visualized and iterated in a real-time 3D browser environment.\n\nThe system operates through two coordinated layers.\n\nCHAT interprets natural language inputs. A precedent and site condition are translated into a structured spatial logic based on analyzed case studies, producing a programmatic framework.\n\nINDEX simulates this framework within the site context, generating massing, assigning structural systems, and producing live performance metrics including GFA, FAR, program distribution, and floor-by-floor breakdowns. Each iteration outputs a coherent, BIM-ready model, eliminating the disconnect between concept and documentation in early design stages.\n\nUnlike conventional workflows where program, form, and structure are developed sequentially, VORO evaluates them simultaneously. This enables immediate feedback between spatial intent and buildable geometry, producing design proposals that are structurally and programmatically consistent from the first iteration.",
     cover: "images/VORO/VORO-video.mp4",
     coverFit: "contain",          /* 16:9 UI capture, cropping it loses the panels */
@@ -24,30 +24,30 @@ const PROJECTS_V3 = {
     role: "Architectural design & programming",
     client: "NYCU GIA Studio · 5-person team",
     services: "Landscape regeneration, branding",
-    intro: "Xiju lies about an hour by boat from Nangan and Beigan, an island inside an island. The project reopens Cold War Outpost No. 32 at its western tip and remaps the landscape around it. The site is meant to be navigated the way an orienteering course is, by the body rather than by signage.",
+    intro: "On Xiju, a decommissioned military outpost becomes the starting point for a network of walking routes. The proposal reuses its existing section as three landscape layers: planting on the upper slope, stone rooms at grade, and water within the tunnels. Terraced paths, drainage, and small architectural interventions connect the bunkers without erasing their material character.",
     body: "Xiju sits at Taiwan's maritime edge, roughly an hour by boat from Nangan and Beigan. That distance has shaped its ecology and its culture, and the island reads as an island inside an island, with spatial and social conditions unlike the rest of the Matsu archipelago.\n\nFormer Military Outpost No. 32 holds the westernmost tip, on hilly ground where sandstone cliffs drop into the sea. The landscape here was made by military necessity, laid down by soldiers stationed on the island 40 to 50 years ago, so vegetation and ecology still change with elevation and with the defensive job each level once had.\n\nThe project treats that inheritance as structure rather than ruin. The outpost already carries a sectional logic of protection, enclosure and layered material. That logic is kept and given new work to do: drainage, insulation and half-buried rooms set into the terrain. Military construction becomes landscape infrastructure.\n\nThree layers organise the proposal. Plant at +240M, where new planting reinterprets Matsu's military landscape and covers the rear hillside with newly formed terrain. Stone at ±0M, where stacked stone separates the programmes so the rooms feel cut out of the mountain. Water at −400M, where water is drained into the tunnel system to form public and private bathing spaces, which also settles the damp that has always sat inside the rock.\n\nAbove all of it, 'Orienteering' works as a brand for the island. Five routes, one each for sight, sound, smell, taste and touch, take travellers through Matsu's battlefield culture on their own legs. The visit becomes a journey rather than a destination, and no two visits have to read the same way. As the stronghold retires from military duty it merges back into the earth. As one disappears, one emerges.\n\nInstructors: Shu-Chang Kung, Ling-Li Tseng. 5 weeks, Summer 2022.",
     cover: "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯.mp4",
     coverSpeed: 2,
     gallery: [
-      { src: "images/orienteering/Portfolio_260131_selected10%20-%20Copy.png", cap: "The real Xiju. Abandoned stone villages, granite shores and agave on the slopes. Very few people come out this far, and that emptiness is the material the project works with.", wide: true },
-      { src: "images/orienteering/Portfolio_260131_selected7.png", cap: "Three landscape layers, Plant at +240M, Stone at ±0M and Water at −400M. The divisions are not arbitrary. Vegetation and ecology on Xiju already vary with elevation and with the defensive job each level once had." },
-      { src: "images/orienteering/1%20(1).png", cap: "Arrival. Terraced contour planting curves down a misty hillside toward the buried outpost. The approach is long on purpose, so the weather and the ground register before the building does." },
-      { src: "images/orienteering/1%20(2).png", cap: "The stronghold entrance keeps the old garrison motto on a wall set into the green berm." },
-      { src: "images/orienteering/1%20(11).png", cap: "Grass-covered terraces fold over a stone chamber buried in the slope. The old section still protects and encloses, but now it carries drainage and insulation instead of a garrison. As one disappears, another emerges." },
-      { src: "images/orienteering/1%20(3).png", cap: "Interiors feel carved from the mountain. Stacked stone sets one programme apart from the next, and a long floor channel takes water down into the tunnels, which is also how the damp inside the rock gets handled." },
-      { src: "images/orienteering/1%20(6).png", cap: "Late light reaches deep into a sheltered stone hall of columns and stepped seating." },
-      { src: "images/orienteering/1%20(9).png", cap: "Organic stone stairways stitch the outpost's levels together; a visitor rests on the landing." },
-      { src: "images/orienteering/1%20(10).png", cap: "A narrow cut between concrete walls releases onto the sea and the setting sun. Sound and salt reach you before the view does." },
-      { src: "images/orienteering/1%20(2).jpg", cap: "Twilight. A single weathering-steel wall holds the edge between hillside and sea." },
-      { src: "images/orienteering/site/IMG_12221.jpeg", cap: "Site: the island's deserted stone settlement above the bay. Xiju belongs to Juguang Township, about an hour from Nangan and Beigan." },
-      { src: "images/orienteering/site/IMG_2369.jpg", cap: "Site: the existing outpost today, stone walls and a round pillbox over the offshore rocks." },
-      { src: "images/orienteering/site/IMG_1066.jpeg", cap: "Site: a stone-capped bunker embedded in the miscanthus hillside, a radar post on the ridge." },
-      { src: "images/orienteering/site/IMG_1045.jpeg", cap: "Site: a concrete gun apron and drainage channel left by the garrison." },
-      { src: "images/orienteering/site/IMG_1070.jpeg", cap: "Site: weathered bunker blocks and the trench path along the rampart." },
-      { src: "images/orienteering/site/IMG_18277.JPG", cap: "Site: sandstone cliffs and rockfall dropping to the sea below the outpost." },
-      { src: "images/orienteering/site/IMG_2251.jpg", cap: "Site: inside a round pillbox, light slipping through a single embrasure." },
-      { src: "images/orienteering/site/IMG_2290.jpg", cap: "Site: a narrow concrete passage within the tunnel system." },
-      { src: "images/orienteering/site/IMG_2302.jpg", cap: "Site: a firing embrasure framing nothing now but the open sea." }
+      { src: "images/orienteering/Portfolio_260131_selected10%20-%20Copy.webp", cap: "The real Xiju. Abandoned stone villages, granite shores and agave on the slopes. Very few people come out this far, and that emptiness is the material the project works with.", wide: true },
+      { src: "images/orienteering/Portfolio_260131_selected7.webp", cap: "Three landscape layers, Plant at +240M, Stone at ±0M and Water at −400M. The divisions are not arbitrary. Vegetation and ecology on Xiju already vary with elevation and with the defensive job each level once had." },
+      { src: "images/orienteering/1%20(1).webp", cap: "Arrival. Terraced contour planting curves down a misty hillside toward the buried outpost. The approach is long on purpose, so the weather and the ground register before the building does." },
+      { src: "images/orienteering/1%20(2)-png.webp", cap: "The stronghold entrance keeps the old garrison motto on a wall set into the green berm." },
+      { src: "images/orienteering/1%20(11).webp", cap: "Grass-covered terraces fold over a stone chamber buried in the slope. The old section still protects and encloses, but now it carries drainage and insulation instead of a garrison. As one disappears, another emerges." },
+      { src: "images/orienteering/1%20(3).webp", cap: "Interiors feel carved from the mountain. Stacked stone sets one programme apart from the next, and a long floor channel takes water down into the tunnels, which is also how the damp inside the rock gets handled." },
+      { src: "images/orienteering/1%20(6).webp", cap: "Late light reaches deep into a sheltered stone hall of columns and stepped seating." },
+      { src: "images/orienteering/1%20(9).webp", cap: "Organic stone stairways stitch the outpost's levels together; a visitor rests on the landing." },
+      { src: "images/orienteering/1%20(10).webp", cap: "A narrow cut between concrete walls releases onto the sea and the setting sun. Sound and salt reach you before the view does." },
+      { src: "images/orienteering/1%20(2).webp", cap: "Twilight. A single weathering-steel wall holds the edge between hillside and sea." },
+      { src: "images/orienteering/site/IMG_12221.webp", cap: "Site: the island's deserted stone settlement above the bay. Xiju belongs to Juguang Township, about an hour from Nangan and Beigan." },
+      { src: "images/orienteering/site/IMG_2369.webp", cap: "Site: the existing outpost today, stone walls and a round pillbox over the offshore rocks." },
+      { src: "images/orienteering/site/IMG_1066.webp", cap: "Site: a stone-capped bunker embedded in the miscanthus hillside, a radar post on the ridge." },
+      { src: "images/orienteering/site/IMG_1045.webp", cap: "Site: a concrete gun apron and drainage channel left by the garrison." },
+      { src: "images/orienteering/site/IMG_1070.webp", cap: "Site: weathered bunker blocks and the trench path along the rampart." },
+      { src: "images/orienteering/site/IMG_18277.webp", cap: "Site: sandstone cliffs and rockfall dropping to the sea below the outpost." },
+      { src: "images/orienteering/site/IMG_2251.webp", cap: "Site: inside a round pillbox, light slipping through a single embrasure." },
+      { src: "images/orienteering/site/IMG_2290.webp", cap: "Site: a narrow concrete passage within the tunnel system." },
+      { src: "images/orienteering/site/IMG_2302.webp", cap: "Site: a firing embrasure framing nothing now but the open sea." }
     ]
   },
   "02": {
@@ -57,14 +57,14 @@ const PROJECTS_V3 = {
     role: "Design development & BIM coordination",
     client: "NYCU / TDIS · international competition",
     services: "Sustainable housing, mass timber",
-    intro: "A transitional, net-zero housing system that inserts shared, mid-way housing into the gaps left by Taiwan's decade-long urban renewal process.",
+    intro: "1 House for All places shared, net-zero transitional housing on vacant lots created by Taiwan's slow urban-renewal process. A shared ground floor, flexible dwelling levels, and rooftop day care are organised around one service core. The mass-timber structure, reusable façade, and integrated energy systems were tested through a full-scale demonstration unit built by the team.",
     body: "Taiwan's average building lifespan is only 35-40 years, and urban renewal takes a decade on average, which leaves demolished gaps across the city while complex ownership stalls rebuilding. '1 House for All' fills those gaps with mid-way buildings. Each one is a net-zero transitional house and also a social-enterprise housing and energy-sharing hub, and the model can be replicated across different sites. Built from mass timber (CLT and GLT) with a modular, adaptable façade, the system is designed to be fast-built, fully disassembled and reused in the next construction. A shared ground floor and party-core wall let the plan flex for different residents, bringing together elderly people, families and temporary occupants, while adding e-bike and e-cargo charging to the neighbourhood. The final outcome was a 1:1 demonstration unit the team built themselves. 30-person teamwork · 8 months, 2021F-2022S.",
-    cover: "images/1-house-for-all/work-02.png",
+    cover: "images/1-house-for-all/work-02.webp",
     gallery: [
-      { src: "images/1-house-for-all/building%20life%20cycle.png", cap: "Building life cycle. Each layer is designed to be replaced on its own timeline.", wide: true },
-      { src: "images/1-house-for-all/Portfolio_260131_selected16.png", cap: "Plans and section: shared ground floor, dwelling units and a rooftop day care.", wide: true },
-      { src: "images/1-house-for-all/construction%20system.png", cap: "Construction system: mass timber (CLT and GLT) wrapped in a reusable steel-framed skin.", wide: true },
-      { src: "images/1-house-for-all/pipeline%20plan.png", cap: "Energy systems: water, active and passive climate control sharing one core.", wide: true }
+      { src: "images/1-house-for-all/building%20life%20cycle.webp", cap: "Building life cycle. Each layer is designed to be replaced on its own timeline.", wide: true },
+      { src: "images/1-house-for-all/Portfolio_260131_selected16.webp", cap: "Plans and section: shared ground floor, dwelling units and a rooftop day care.", wide: true },
+      { src: "images/1-house-for-all/construction%20system.webp", cap: "Construction system: mass timber (CLT and GLT) wrapped in a reusable steel-framed skin.", wide: true },
+      { src: "images/1-house-for-all/pipeline%20plan.webp", cap: "Energy systems: water, active and passive climate control sharing one core.", wide: true }
     ]
   },
   "03": {
@@ -73,20 +73,20 @@ const PROJECTS_V3 = {
     role: "Architectural design & coordination",
     client: "Professional practice · MRT Banqiao Station",
     services: "Transit infrastructure, detailing",
-    intro: "A new entrance for MRT Banqiao Station in New Taipei City, translating landscape motifs into buildable systems through professional practice.",
+    intro: "Designed in professional practice, this new entrance for Banqiao MRT Station uses an arched canopy to extend the landscaped edge and clarify the route into the concourse. An open double-height ground level improves circulation, while a two-metre cantilever and rain-screen louvers provide better protection from wind-driven rain. The work included plans, sections, details, and coordination within construction constraints.",
     body: "A new entrance for Banqiao Station in New Taipei City, developed in professional practice with an outsourced team in India, where design decisions constantly had to adjust to construction constraints. Landscape motifs are translated into arched structures that prolong a natural atmosphere and form a continuous urban green corridor. An open, double-height ground level enhances spatial permeability, while the loop line's signature colour gives covered circulation and clearer entry points for daily commuters. A cantilevered 2 m extension and rain-screen louvers optimise wind and rain protection. 885 m² · NT$29,920,000.",
-    cover: "images/banqiao-station/work-03.png",
+    cover: "images/banqiao-station/work-03.webp",
     gallery: [
-      { src: "images/banqiao-station/work-03-02.png", cap: "Night view. The loop line colour lights the covered circulation.", wide: true },
-      { src: "images/banqiao-station/work-03-01.png", cap: "Entrance plaza and arched canopy at grade." },
-      { src: "images/banqiao-station/work-03-03.png", cap: "Arched structure forming a continuous urban green corridor." },
-      { src: "images/banqiao-station/work-03-04.png", cap: "Circulation through the open, double-height ground level." },
-      { src: "images/banqiao-station/work-03-05.png", cap: "Cantilevered 2 m extension with rain-screen louvers." },
-      { src: "images/banqiao-station/场景%2010.png", cap: "Night view beneath the lit canopy, stairs descending to the concourse.", wide: true },
-      { src: "images/banqiao-station/fl1_plan.png", cap: "Ground floor plan: entrance, escalator core and landscaped forecourt.", wide: true },
-      { src: "images/banqiao-station/section.png", cap: "Long section. The metal-clad roof lifts over a double-height concourse.", wide: true },
-      { src: "images/banqiao-station/escalator-section.png", cap: "Escalator section. Circulation threads between street and platform.", wide: true },
-      { src: "images/banqiao-station/escalator-section-2.png", cap: "Detailed section through the station's underground level and escalator.", wide: true }
+      { src: "images/banqiao-station/work-03-02.webp", cap: "Night view. The loop line colour lights the covered circulation.", wide: true },
+      { src: "images/banqiao-station/work-03-01.webp", cap: "Entrance plaza and arched canopy at grade." },
+      { src: "images/banqiao-station/work-03-03.webp", cap: "Arched structure forming a continuous urban green corridor." },
+      { src: "images/banqiao-station/work-03-04.webp", cap: "Circulation through the open, double-height ground level." },
+      { src: "images/banqiao-station/work-03-05.webp", cap: "Cantilevered 2 m extension with rain-screen louvers." },
+      { src: "images/banqiao-station/%E5%9C%BA%E6%99%AF%2010.webp", cap: "Night view beneath the lit canopy, stairs descending to the concourse.", wide: true },
+      { src: "images/banqiao-station/fl1_plan.webp", cap: "Ground floor plan: entrance, escalator core and landscaped forecourt.", wide: true },
+      { src: "images/banqiao-station/section.webp", cap: "Long section. The metal-clad roof lifts over a double-height concourse.", wide: true },
+      { src: "images/banqiao-station/escalator-section.webp", cap: "Escalator section. Circulation threads between street and platform.", wide: true },
+      { src: "images/banqiao-station/escalator-section-2.webp", cap: "Detailed section through the station's underground level and escalator.", wide: true }
     ]
   },
   "04": {
@@ -95,22 +95,22 @@ const PROJECTS_V3 = {
     role: "Structural design, prototyping, glazing, robotic 3D printing",
     client: "SCI-Arc · Herwig Baumgartner",
     services: "Post-disaster housing, ceramic fabrication",
-    intro: "Recovery housing for wildfire-displaced communities, built from 3D-printed ceramics and rammed earth. The units treat temporary housing as part of a longer recovery process.",
+    intro: "Earthen is a transitional ADU proposal for households displaced by California wildfires. Rammed-earth walls and robotically printed ceramic modules form a durable envelope; grooves and pockets direct rainwater and support planting. The system was tested through robotic printing, glaze studies, window and planter details, and a half-scale wall prototype.",
     body: "Earthen responds to the increasing frequency of California wildfires and the prolonged displacement that follows. Rather than treating temporary housing as disposable, it frames shelter as part of a longer recovery process, a system of transitional ADUs that can be deployed quickly yet remain useful as people return to stability. Sited at 3328 N Fair Oaks Avenue in Altadena, a lot left in ruin after the Eaton Fire, it pairs housing with a community bathhouse to form a small-scale recovery infrastructure for daily life and collective healing. Using 3D-printed ceramics and rammed earth, the design explores construction that is locally grounded and thermally resilient. A robotically 3D-printed ceramic façade collects, channels and retains rainwater through algorithmic growth patterns. Each module is printed in clay, then glazed and fired into an earth-toned palette, so the architectural skin works as a ‘living’ mediator rather than a static barrier. 7-person teamwork · 15 weeks, Fall 2025.",
-    cover: "images/earthen/work-04-01.jpg",
+    cover: "images/earthen/work-04-01.webp",
     gallery: [
-      { src: "images/earthen/DSC03168.JPG", cap: "Fired ceramic façade. Printed clay glazed into an earth-toned palette.", wide: true },
-      { src: "images/earthen/DSC03170.JPG", cap: "Glaze detail. Reactive whites and chrome pool between the printed layers." },
-      { src: "images/earthen/work-04-04.jpg", cap: "Robotic 3D printing of the ceramic units." },
-      { src: "images/earthen/work-04-05.jpg", cap: "Wall-chunk mock-up of the printed ceramic skin." },
-      { src: "images/earthen/window%20lower.png", cap: "Installed mock-up. The window sill meets the printed ceramic wall." },
-      { src: "images/earthen/window%20upper.png", cap: "Installed mock-up. The window head and the rainwater channel above." },
-      { src: "images/earthen/work-04-07.jpg", cap: "Prototype chunk, plan and elevation at half scale." },
-      { src: "images/earthen/Ceramic%20Unit%20Schematics.jpg", cap: "Ceramic unit schematics, the catalogue of printed modules at body scale.", wide: true },
-      { src: "images/earthen/facade%20zone.png", cap: "Façade performance zones. Extrusions and pockets channel and hold rainwater." },
-      { src: "images/earthen/glazing.png", cap: "Glaze study. Chrome, palladium, reactive white and edge colours layered to melt and pool." },
-      { src: "images/earthen/wall%20section.jpg", cap: "Wall section. Glazing carried on rammed earth and 3D-printed ceramic." },
-      { src: "images/earthen/window%20detail.jpg", cap: "Window and planter details, with irrigation feeding the succulent pockets." }
+      { src: "images/earthen/DSC03168.webp", cap: "Fired ceramic façade. Printed clay glazed into an earth-toned palette.", wide: true },
+      { src: "images/earthen/DSC03170.webp", cap: "Glaze detail. Reactive whites and chrome pool between the printed layers." },
+      { src: "images/earthen/work-04-04.webp", cap: "Robotic 3D printing of the ceramic units." },
+      { src: "images/earthen/work-04-05.webp", cap: "Wall-chunk mock-up of the printed ceramic skin." },
+      { src: "images/earthen/window%20lower.webp", cap: "Installed mock-up. The window sill meets the printed ceramic wall." },
+      { src: "images/earthen/window%20upper.webp", cap: "Installed mock-up. The window head and the rainwater channel above." },
+      { src: "images/earthen/work-04-07.webp", cap: "Prototype chunk, plan and elevation at half scale." },
+      { src: "images/earthen/Ceramic%20Unit%20Schematics.webp", cap: "Ceramic unit schematics, the catalogue of printed modules at body scale.", wide: true },
+      { src: "images/earthen/facade%20zone.webp", cap: "Façade performance zones. Extrusions and pockets channel and hold rainwater." },
+      { src: "images/earthen/glazing.webp", cap: "Glaze study. Chrome, palladium, reactive white and edge colours layered to melt and pool." },
+      { src: "images/earthen/wall%20section.webp", cap: "Wall section. Glazing carried on rammed earth and 3D-printed ceramic." },
+      { src: "images/earthen/window%20detail.webp", cap: "Window and planter details, with irrigation feeding the succulent pockets." }
     ]
   },
   "05": {
@@ -119,9 +119,9 @@ const PROJECTS_V3 = {
     role: "Spatial design, AI image generation, diagrams, film editing",
     client: "NYCU competition · 5-person team",
     services: "Generative AI, cognitive mapping, game design",
-    intro: "A generative AI competition entry that turns collective memory into playable virtual space, guided by Edward Tolman's theory of cognitive maps.",
+    intro: "DreamStudio uses AI-generated images as source material for a playable environment built in Rhino and Unreal Engine. The project translates participants' spatial memories into a shared, navigable world.",
     body: "DreamStudio is a design competition at NYCU exploring how an AI image generator can drive program definition and design concepts. Building on Edward Tolman's 1948 theory of cognitive maps, the mental, first-person representations of space built from both objective spatial features and subjective experience, the team developed a methodology that transforms collective memory into virtual spaces, generating layered conceptual experiences. Conceptual, emotional and contextual prompts are fed through neural networks (DreamStudio → Rhino → Unreal Engine) to deconstruct and recombine existing spaces into a playable virtual world. As an electronic extension of the body, the resulting space is navigated with simple keyboard and mouse, its discontinuous scales and atmospheres producing an uncanny experience distinct from physical space. 5-person team · 10 days, Fall 2022.",
-    cover: "images/dreamstudio/work-05.png",
+    cover: "images/dreamstudio/work-05.webp",
     /* hero cycles through the four walkthrough clips instead of a still */
     coverPlaylist: [
       "images/dreamstudio/clips/vide_ltest1_1.mp4?v=20260701",
@@ -130,17 +130,17 @@ const PROJECTS_V3 = {
       "images/dreamstudio/clips/vide_ltest1-4.mp4"
     ],
     gallery: [
-      { src: "images/dreamstudio/Portfolio_260131_selected21.png", wide: true },
-      { src: "images/dreamstudio/diagram.png", wide: true },
-      { src: "images/dreamstudio/diagram-2.png", wide: true },
-      { src: "images/dreamstudio/index/1.png" },
-      { src: "images/dreamstudio/index/work-05-02.png" },
-      { src: "images/dreamstudio/work-05-03.png" },
-      { src: "images/dreamstudio/Gemini_Generated_Image_n17i6wn17i6wn17i%20(1).png" },
-      { src: "images/dreamstudio/Gemini_Generated_Image_km54j7km54j7km54.png" },
-      { src: "images/dreamstudio/index/Gemini_Generated_Image_s3x6ous3x6ous3x6.png" },
-      { src: "images/dreamstudio/index/Gemini_Generated_Image_bitvs2bitvs2bitv.png" },
-      { src: "images/dreamstudio/Gemini_Generated_Image_6qj0056qj0056qj0.png" }
+      { src: "images/dreamstudio/Portfolio_260131_selected21.webp", wide: true },
+      { src: "images/dreamstudio/diagram.webp", wide: true },
+      { src: "images/dreamstudio/diagram-2.webp", wide: true },
+      { src: "images/dreamstudio/index/1.webp" },
+      { src: "images/dreamstudio/index/work-05-02.webp" },
+      { src: "images/dreamstudio/work-05-03.webp" },
+      { src: "images/dreamstudio/Gemini_Generated_Image_n17i6wn17i6wn17i%20(1).webp" },
+      { src: "images/dreamstudio/Gemini_Generated_Image_km54j7km54j7km54.webp" },
+      { src: "images/dreamstudio/index/Gemini_Generated_Image_s3x6ous3x6ous3x6.webp" },
+      { src: "images/dreamstudio/index/Gemini_Generated_Image_bitvs2bitvs2bitv.webp" },
+      { src: "images/dreamstudio/Gemini_Generated_Image_6qj0056qj0056qj0.webp" }
     ]
   },
   "threshld": {
@@ -148,14 +148,14 @@ const PROJECTS_V3 = {
     role: "Product design, inflatable mechanism, material studies & spatial design",
     client: "Flagship store concept · independent study",
     services: "Generative AI workflow, wearable design, soft robotics, ETFE flagship store",
-    intro: "THRESHLD starts from a wearable product, an ornament that eases poor posture by gently inflating, and grows into a flagship store in LA's Chinatown where the ETFE skin responds to the posture of the people inside. The whole process is driven by AI, from product design to program layout and structure generation, working across ComfyUI, Grasshopper Python and Blender MCP.",
+    intro: "THRESHLD began as an inflatable wearable that responds when the wearer slouches. Its three-stage mechanism moves from reminder to warning to supported rest, while material tests define colour and transparency. The same principle is scaled into an ETFE storefront in Chinatown, where the envelope changes with the posture of people inside. Product and space were developed through one generative workflow.",
     body: "THRESHLD starts from product design and lets the architecture follow. The product, THRESHLD, is a wearable ornament for poor posture and muscle tension: when the body slips into a wrong position, it responds by softly inflating. It runs a three-step intervention. Inner 'fingers' first give a gentle Remind signal, then gradually inflate to Warn, and if still ignored, fully inflate into a rigid mode that forces the body to rest. The mechanism is triggered by the frequency and angle of movement and calibrated against range-of-motion theory, then adapted into versions for other parts of the body; before buying, customers are scanned in a body-scanning booth so each piece fits perfectly. Material studies push the inflatable aesthetic, with hydro-dipping colour tests and experiments in material opacity, with a texture map applied across the orange and mint-blue parts. The flagship store carries the same idea from body to building: wrapped in a translucent ETFE skin, its inflatable façade responds to its visitors' posture, swelling whenever the people inside slip out of alignment, so the store reminds, corrects and breathes exactly as the product does. The whole project, from wearable to materials to store, is built through a generative pipeline: Blender driven through an MCP agent, with ComfyUI, LoRA and ControlNet steering form, texture and image so every iteration stays consistent across product and architecture. Product, fabrication & spatial study, 2026.",
     cover: "images/THRESHLD/THRESHLD.mp4",
     gallery: [
       { src: "images/THRESHLD/16_9_2.mp4", cap: "The wearable in motion, inflating as posture slips.",
         left: [
-          { src: "images/THRESHLD/Product-2.png", cap: "Product render of the translucent inflatable ornament." },
-          { src: "images/THRESHLD/work-02-03.png", cap: "ETFE-wrapped interior. The façade breathes with the bodies inside." }
+          { src: "images/THRESHLD/Product-2.webp", cap: "Product render of the translucent inflatable ornament." },
+          { src: "images/THRESHLD/work-02-03.webp", cap: "ETFE-wrapped interior. The façade breathes with the bodies inside." }
         ] },
       { src: "images/THRESHLD/timelapse_noVoice.mp4", cap: "Fabrication timelapse." },
       { src: "images/THRESHLD/mvLYsvfeKxzzeysLGpoI3_844fd4faae1c40de9c0b257b125353bb.mp4", cap: "Three-step intervention: Remind, Warn, then rigid rest." }
@@ -164,13 +164,13 @@ const PROJECTS_V3 = {
   "archive": {
     title: "Archive", cat: "Scraps", year: "Various", tag: "Archive",
     role: "", client: "", services: "",
-    intro: "Some truly random stuff.",
+    intro: "Two early studies in responsive structures and full-scale prototyping. Kaleidoscope is an Arduino-controlled kinetic installation that unfolds when a viewer approaches. The Gongguan transit pavilion was developed through a full-scale mock-up and structural load testing.",
     body: "",
     layout: "archive",
     cover: "images/archive/kaleidoscope.mp4",
     video: "images/archive/kaleidoscope.mp4",
-    longImg: "images/archive/archive-01.png",
-    mockups: ["images/archive/1_1%20MOCKUP.jpg", "images/archive/1_1%20MOCKUP-2.jpg"],
+    longImg: "images/archive/archive-01.webp",
+    mockups: ["images/archive/1_1%20MOCKUP.webp", "images/archive/1_1%20MOCKUP-2.webp"],
     introA: "Kaleidoscope is an interactive kinetic installation inspired by Froebel Gifts and auxetic chequered tiling. The structure responds to the viewer's proximity through an Arduino-controlled mechanism, unfolding into a blooming form as someone approaches and returning to its resting state as they move away. By combining geometric transformation with physical interaction, the project reinterprets a simple construction toy as a responsive architectural object. (2021)",
     introB: "A transit pavilion designed for one of Taipei's busiest urban gateways and validated through full-scale prototyping. Located at Gongguan Station, the primary entrance to National Taiwan University and the surrounding commercial district, the project reimagines the MRT station exit as a civic pavilion. After completing the design, we fabricated a 1:1 mock-up and conducted structural load testing to verify its constructability and load-bearing performance, bridging digital design with real-world fabrication. (2019)",
     gallery: []
@@ -181,7 +181,7 @@ const PROJECTS_V3 = {
     role: "System design, Unity front-end, Python back-end, computer vision pipeline",
     client: "SCI-Arc · AT Studio 1",
     services: "Real-time computer vision, speech recognition, generative portrait, interactive installation",
-    intro: "A real-time interactive installation that turns a passerby into a participant. A live camera reads each visitor's expression, finds their closest match among other participants, and generates a composite portrait of the two as an icebreaker for real-world conversation.",
+    intro: "HiYou is a live installation designed to help strangers meet. A Unity front end and Python back end analyse facial and vocal cues from a short interaction, match participants, and generate a composite portrait that helps them find each other in the room. The system runs locally and was tested with participants at L-Acoustics.",
     body: "HiYou is a real-time interactive installation that transforms passersby into participants through AI-powered social interaction. Using a live camera feed, the system detects people, tracks their attention, and begins the experience after a three-second gaze.\n\nParticipants can answer a short series of spoken questions, which are transcribed using OpenAI Whisper. The system then analyzes facial features with MediaPipe Face Mesh (468 landmarks), together with behavioral metrics including head movement, eye activity, smile intensity, rhythm, and pitch variation.\n\nHiYou compares these visual and behavioral characteristics with other participants collected during the event to find the closest match. It generates a composite portrait blending the two faces and guides participants to meet each other in the physical space.\n\nBuilt with a Unity front end and a Python back end, the installation uses HTTP and OSC/UDP for real-time communication. The entire pipeline runs locally with MediaPipe, Whisper, and ArcFace, enabling fast, offline operation without cloud services.",
     cover: "images/hi-you/HiYou.mp4",
     coverPortrait: true,
@@ -189,7 +189,7 @@ const PROJECTS_V3 = {
     gallery: [
       { src: "images/hi-you/L-Acoustics%20VID.mp4", cap: "Live installation demo at L-Acoustics with real participants.",
         left: [
-          { src: "images/hi-you/workflow_final.png", cap: "System workflow: a two-peer architecture with a Unity front end and a Python back end." }
+          { src: "images/hi-you/workflow_final.webp", cap: "System workflow: a two-peer architecture with a Unity front end and a Python back end." }
         ] }
     ]
   },
@@ -198,7 +198,7 @@ const PROJECTS_V3 = {
     team: "3-Person Teamwork",
     role: "Assisted M. Casey Rehm with image sequences, motion narratives and projection output",
     client: "SCI-Arc · M. Casey Rehm", services: "",
-    intro: "A series of AI-generated videos projected on the garden entrance of the DTLA Public Library, using custom-developed pipelines for the Fall 2025 SCI-Arc Gala.",
+    intro: "For the 2025 SCI-Arc Gala, I worked with M. Casey Rehm on image sequences, motion transitions, and projection output for the Los Angeles Central Library façade. Architectural drawings and generated imagery were edited into a continuous film for the building-scale installation.",
     body: "",
     cover: "images/sciarc-gala/SCIArcGalaFinalVideo.mp4",
     coverPortrait: true,
@@ -207,10 +207,10 @@ const PROJECTS_V3 = {
       { src: "images/sciarc-gala/archive-gala-opening.mp4", cap: "Annual gala opening film, projected on the LA Central Library façade.",
         even: true,
         left: [
-          { src: "images/sciarc-gala/Gemini_Generated_Image_8fvg1i8fvg1i8fvg.png", cap: "Projection mapping turns the historic tower into a canvas." }
+          { src: "images/sciarc-gala/Gemini_Generated_Image_8fvg1i8fvg1i8fvg.webp", cap: "Projection mapping turns the historic tower into a canvas." }
         ] },
-      { src: "images/sciarc-gala/heroshot+exp.png", cap: "SCI-Arc Gala 2025, a night in downtown Los Angeles.", wide: true },
-      { src: "images/sciarc-gala/Gemini_Generated_Image_vrft60vrft60vrft.png", cap: "Projected drawings washing over the old stone." }
+      { src: "images/sciarc-gala/heroshot+exp.webp", cap: "SCI-Arc Gala 2025, a night in downtown Los Angeles.", wide: true },
+      { src: "images/sciarc-gala/Gemini_Generated_Image_vrft60vrft60vrft.webp", cap: "Projected drawings washing over the old stone." }
     ]
   }
 };
@@ -253,6 +253,11 @@ const HERO_OVERRIDE_V3 = {};
 
 /* is this src a video? */
 const isVidV3 = (s) => /\.(mp4|webm|mov)(?=$|[?#])/i.test(s || "");
+/* every clip ships a small first-frame JPEG under images/posters/, so a slot shows
+   its shot straight away instead of sitting empty while the video downloads.
+   Same relative path, .jpg in place of the video extension. */
+const posterForV3 = (s) => "images/posters/" + String(s || "").split(/[?#]/)[0]
+  .replace(/^images\//, "").replace(/\.[^.\/]+$/, ".jpg");
 
 /* ---- "projects" label → floating index of every case; works on every page ---- */
 function initProjectsIndex() {
