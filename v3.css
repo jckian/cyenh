@@ -236,19 +236,29 @@ a { color: inherit; text-decoration: none; }
 
 /* deterministic placement: every project owns a separate row, alternating across
    the grid without ever becoming a side-by-side pair. */
-/* n=0: the lead entry fills exactly the viewport below the fixed headliner. */
+/* n=0: the lead entry opens full-viewport and full-bleed, with the fixed
+   headliner floating over the footage as in the previous composition. */
 .feed__item[data-n="0"] {
   grid-column: 1 / -1;
   grid-row: 1;
   position: relative;
-  margin: -24px calc(var(--edge) * -1) 0;
-  height: calc(100svh - var(--head-h));
+  margin: calc((var(--head-h) + 24px) * -1) calc(var(--edge) * -1) 0;
+  height: 100svh;
 }
 .feed__item[data-n="0"] .feed__media { height: 100%; max-height: none; aspect-ratio: auto; }
 .feed__item[data-n="0"] .feed__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* soft top scrim keeps the overlaid headliner legible */
+.feed__item[data-n="0"] .feed__media::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(var(--head-h) + 50px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .42), rgba(0, 0, 0, 0));
+  pointer-events: none;
 }
 /* the caption sits on the footage, so it needs a scrim to stay readable */
 .feed__item[data-n="0"] .feed__media::after {
@@ -991,11 +1001,11 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
     margin: 0 0 48px !important;
     width: 100%;
   }
-  /* the opener fills the mobile viewport below the fixed headliner */
+  /* the opener remains full-viewport and full-bleed on mobile */
   .feed:not(.is-filtered) .feed__item[data-n="0"] {
-    margin: -16px calc(var(--edge) * -1) 48px !important;
+    margin: calc((var(--head-h) + 16px) * -1) calc(var(--edge) * -1) 48px !important;
     width: auto;
-    height: calc(100svh - var(--head-h));
+    height: 100svh;
   }
   /* filtered index on small screens: wrap to 2-up instead of one cramped row */
   .feed.is-filtered { flex-wrap: wrap; min-height: 0; align-items: stretch; }
