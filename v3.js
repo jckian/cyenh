@@ -508,6 +508,41 @@ function initHeroHeader() {
   addEventListener("resize", syncHeroHeader);
 }
 
+/* ---- presentation-style opener: while the page is still at the top, two mouse
+   wheel notches (or one short trackpad gesture) advance past the full-screen NEXA
+   slide. It runs once per visit; the rest of the index keeps native scrolling. ---- */
+function initLeadWheelSnap() {
+  const feed = document.querySelector(".feed");
+  const hero = document.querySelector('.feed__item[data-n="0"]');
+  if (!feed || !hero) return;
+
+  let wheelDistance = 0;
+  let resetTimer = 0;
+  let hasSnapped = false;
+  let isAnimating = false;
+
+  addEventListener("wheel", (event) => {
+    if (hasSnapped || isAnimating || event.deltaY <= 0 || feed.classList.contains("is-filtered")) return;
+
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const nearTop = scrollY < Math.min(160, innerHeight * 0.18) && heroBottom > innerHeight * 0.7;
+    if (!nearTop) return;
+
+    event.preventDefault();
+    wheelDistance += Math.abs(event.deltaY);
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => { wheelDistance = 0; }, 600);
+    if (wheelDistance < 150) return;
+
+    hasSnapped = true;
+    isAnimating = true;
+    clearTimeout(resetTimer);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollTo({ top: scrollY + heroBottom, behavior: reduced ? "auto" : "smooth" });
+    setTimeout(() => { isAnimating = false; }, reduced ? 0 : 850);
+  }, { passive: false });
+}
+
 /* ---- video performance: play only while in the viewport ---- */
 function initVideoObserver() {
   const vids = document.querySelectorAll("video[data-lazyplay]");
