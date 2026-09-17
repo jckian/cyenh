@@ -30,6 +30,7 @@ const PROJECTS_V3 = {
     intro: "On Xiju, a decommissioned military outpost becomes the starting point for a network of walking routes. The proposal reuses its existing section as three landscape layers: planting on the upper slope, stone rooms at grade, and water within the tunnels. Terraced paths, drainage, and small architectural interventions connect the bunkers without erasing their material character.",
     body: "Xiju sits at Taiwan's maritime edge, roughly an hour by boat from Nangan and Beigan. That distance has shaped its ecology and its culture, and the island reads as an island inside an island, with spatial and social conditions unlike the rest of the Matsu archipelago.\n\nFormer Military Outpost No. 32 holds the westernmost tip, on hilly ground where sandstone cliffs drop into the sea. The landscape here was made by military necessity, laid down by soldiers stationed on the island 40 to 50 years ago, so vegetation and ecology still change with elevation and with the defensive job each level once had.\n\nThe project treats that inheritance as structure rather than ruin. The outpost already carries a sectional logic of protection, enclosure and layered material. That logic is kept and given new work to do: drainage, insulation and half-buried rooms set into the terrain. Military construction becomes landscape infrastructure.\n\nThree layers organise the proposal. Plant at +240M, where new planting reinterprets Matsu's military landscape and covers the rear hillside with newly formed terrain. Stone at ±0M, where stacked stone separates the programmes so the rooms feel cut out of the mountain. Water at −400M, where water is drained into the tunnel system to form public and private bathing spaces, which also settles the damp that has always sat inside the rock.\n\nAbove all of it, 'Orienteering' works as a brand for the island. Five routes, one each for sight, sound, smell, taste and touch, take travellers through Matsu's battlefield culture on their own legs. The visit becomes a journey rather than a destination, and no two visits have to read the same way. As the stronghold retires from military duty it merges back into the earth. As one disappears, one emerges.\n\nInstructors: Shu-Chang Kung, Ling-Li Tseng. 5 weeks, Summer 2022.",
     cover: "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯.mp4",
+    coverHD: "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯-1080.mp4",
     coverSpeed: 2,
     gallery: [
       { src: "images/orienteering/Portfolio_260131_selected10%20-%20Copy.webp", cap: "The real Xiju. Abandoned stone villages, granite shores and agave on the slopes. Very few people come out this far, and that emptiness is the material the project works with.", wide: true },
@@ -318,6 +319,7 @@ const CLIP_CFG_V3 = {
   "images/NEXA/NEXA-30s.mp4": { start: 0 },
   "images/VORO/VORO-video.mp4": { start: 4 },
   "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯.mp4": { start: 18, rate: 1.5 },
+  "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯-1080.mp4": { start: 0, rate: 1.5 },
   "images/sciarc-gala/SCIArcGalaFinalVideo.mp4": { start: 15 }
 };
 
