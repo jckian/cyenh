@@ -29,7 +29,7 @@
 
   <main class="case3" id="case"></main>
 
-  <script src="v3.js?v=20260916-3"></script>
+  <script src="v3.js?v=20260917-1"></script>
   <script>
     (function () {
       const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -41,8 +41,12 @@
       const p = PROJECTS_V3[id];
       document.title = `Yenhsing Cheng · ${p.title}`;
 
-      /* a coverPlaylist replaces the cover: the hero starts on its first clip and cycles */
-      const hero = (p.coverPlaylist && p.coverPlaylist[0]) || HERO_OVERRIDE_V3[id] || p.cover;
+      /* Desktop heroes use 1080p masters; mobile keeps the lighter files.
+         A playlist replaces the cover and starts on its first clip. */
+      const useHDHero = window.matchMedia('(min-width: 821px)').matches;
+      const heroPlaylist = (useHDHero && p.coverPlaylistHD) || p.coverPlaylist;
+      const hero = (heroPlaylist && heroPlaylist[0]) ||
+        (useHDHero && p.coverHD) || HERO_OVERRIDE_V3[id] || p.cover;
       const site = SITES_V3[id] || '';
       const infoRow = (label, value) => value ? `
         <div class="case3__info-row">
@@ -189,8 +193,8 @@
       /* behaviours, the observer first: resumeHeroVideo must seek AFTER the
          clip-config listener it would otherwise be overwritten by */
       initVideoObserver();
-      const resumedAt = resumeHeroVideo(p.coverPlaylist);
-      initCoverPlaylist(p.coverPlaylist, resumedAt);
+      const resumedAt = resumeHeroVideo(heroPlaylist);
+      initCoverPlaylist(heroPlaylist, resumedAt);
       initReveal();
       initProjectsIndex();
 

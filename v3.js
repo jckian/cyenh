@@ -15,6 +15,7 @@ const PROJECTS_V3 = {
     intro: "VORO is a browser-based design tool that develops program, massing, and structure together. It gives designers early feedback on spatial and structural decisions before the project moves into detailed modelling.",
     body: "VORO translates a design brief into a structured, buildable model. Given a precedent and a site constraint, the system generates a floor-by-floor program, evaluates it against massing typologies (cube, tower, slab, courtyard), and resolves a corresponding structural system: internal frame with curtain wall, structural skin, or structural foam. All outputs are visualized and iterated in a real-time 3D browser environment.\n\nThe system operates through two coordinated layers.\n\nCHAT interprets natural language inputs. A precedent and site condition are translated into a structured spatial logic based on analyzed case studies, producing a programmatic framework.\n\nINDEX simulates this framework within the site context, generating massing, assigning structural systems, and producing live performance metrics including GFA, FAR, program distribution, and floor-by-floor breakdowns. Each iteration outputs a coherent, BIM-ready model, eliminating the disconnect between concept and documentation in early design stages.\n\nUnlike conventional workflows where program, form, and structure are developed sequentially, VORO evaluates them simultaneously. This enables immediate feedback between spatial intent and buildable geometry, producing design proposals that are structurally and programmatically consistent from the first iteration.",
     cover: "images/VORO/VORO-video.mp4",
+    coverHD: "images/VORO/VORO-video-1080.mp4",
     coverFit: "contain",          /* 16:9 UI capture, cropping it loses the panels */
     repo: "https://github.com/jckian/VORO",
     gallery: []
@@ -135,6 +136,12 @@ const PROJECTS_V3 = {
       "images/dreamstudio/clips/vide_ltest1-3.mp4",
       "images/dreamstudio/clips/vide_ltest1-4.mp4"
     ],
+    coverPlaylistHD: [
+      "images/dreamstudio/clips/vide_ltest1_1-1080.mp4",
+      "images/dreamstudio/clips/vide_ltest1-2-1080.mp4",
+      "images/dreamstudio/clips/vide_ltest1-3-1080.mp4",
+      "images/dreamstudio/clips/vide_ltest1-4-1080.mp4"
+    ],
     gallery: [
       { src: "images/dreamstudio/Portfolio_260131_selected21.webp", wide: true },
       { src: "images/dreamstudio/diagram.webp", wide: true },
@@ -158,6 +165,7 @@ const PROJECTS_V3 = {
     intro: "THRESHLD began as an inflatable wearable that responds when the wearer slouches. Its three-stage mechanism moves from reminder to warning to supported rest, while material tests define colour and transparency. The same principle is scaled into an ETFE storefront in Chinatown, where the envelope changes with the posture of people inside. Product and space were developed through one generative workflow.",
     body: "THRESHLD starts from product design and lets the architecture follow. The product, THRESHLD, is a wearable ornament for poor posture and muscle tension: when the body slips into a wrong position, it responds by softly inflating. It runs a three-step intervention. Inner 'fingers' first give a gentle Remind signal, then gradually inflate to Warn, and if still ignored, fully inflate into a rigid mode that forces the body to rest. The mechanism is triggered by the frequency and angle of movement and calibrated against range-of-motion theory, then adapted into versions for other parts of the body; before buying, customers are scanned in a body-scanning booth so each piece fits perfectly. Material studies push the inflatable aesthetic, with hydro-dipping colour tests and experiments in material opacity, with a texture map applied across the orange and mint-blue parts. The flagship store carries the same idea from body to building: wrapped in a translucent ETFE skin, its inflatable façade responds to its visitors' posture, swelling whenever the people inside slip out of alignment, so the store reminds, corrects and breathes exactly as the product does. The whole project, from wearable to materials to store, is built through a generative pipeline: Blender driven through an MCP agent, with ComfyUI, LoRA and ControlNet steering form, texture and image so every iteration stays consistent across product and architecture. Product, fabrication & spatial study, 2026.",
     cover: "images/THRESHLD/THRESHLD.mp4",
+    coverHD: "images/THRESHLD/THRESHLD-1080.mp4",
     gallery: [
       { src: "images/THRESHLD/16_9_2.mp4", cap: "The wearable in motion, inflating as posture slips.",
         left: [
@@ -176,6 +184,7 @@ const PROJECTS_V3 = {
     body: "",
     layout: "archive",
     cover: "images/archive/kaleidoscope.mp4",
+    coverHD: "images/archive/kaleidoscope-1080.mp4",
     video: "images/archive/kaleidoscope.mp4",
     longImg: "images/archive/archive-01.webp",
     mockups: ["images/archive/1_1%20MOCKUP.webp", "images/archive/1_1%20MOCKUP-2.webp"],
@@ -267,7 +276,7 @@ const isVidV3 = (s) => /\.(mp4|webm|mov)(?=$|[?#])/i.test(s || "");
    its shot straight away instead of sitting empty while the video downloads.
    Same relative path, .jpg in place of the video extension. */
 const posterForV3 = (s) => "images/posters/" + String(s || "").split(/[?#]/)[0]
-  .replace(/^images\//, "").replace(/\.[^.\/]+$/, ".jpg");
+  .replace(/^images\//, "").replace(/-1080(?=\.[^.\/]+$)/, "").replace(/\.[^.\/]+$/, ".jpg") + "?v=20260917";
 
 /* ---- "projects" label → floating index of every case; works on every page ---- */
 function initProjectsIndex() {
@@ -306,6 +315,7 @@ function initProjectsIndex() {
 /* per-clip playback: skip a slow lead-in (start, in seconds) and/or speed it up (rate) */
 const CLIP_CFG_V3 = {
   "images/NEXA/nexa-wide-16x9-v4.mp4": { start: 2, rate: 1.5 },
+  "images/NEXA/NEXA-30s.mp4": { start: 0 },
   "images/VORO/VORO-video.mp4": { start: 4 },
   "images/orienteering/冷戰島嶼重生%20-%20馬祖戰地轉譯.mp4": { start: 18, rate: 1.5 },
   "images/sciarc-gala/SCIArcGalaFinalVideo.mp4": { start: 15 }
