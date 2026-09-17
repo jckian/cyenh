@@ -491,6 +491,21 @@ a { color: inherit; text-decoration: none; }
 .feed.is-filtered .feed__item[data-n="0"] .feed__cap-cat,
 .feed.is-filtered .feed__item[data-n="0"] .feed__cap-year { color: var(--cap); }
 .feed.is-filtered .feed__scroll { display: none; }
+.feed__portfolio-download { display: none; }
+.feed.is-filtered[data-group="arch"] {
+  flex-wrap: wrap;
+  align-content: center;
+}
+.feed.is-filtered[data-group="arch"] .feed__portfolio-download {
+  display: block;
+  flex: 0 0 100%;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 /* while filtered, the index is the whole page, hide the about + footer below
    it (and their divider lines) */
 .feed.is-filtered ~ .about3,
@@ -945,6 +960,7 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 .aboutview.is-open { clip-path: inset(0 0 0 0); pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .aboutview { transition: none; } }
 .aboutview__inner {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 48px;
@@ -961,20 +977,14 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
   text-transform: uppercase;
 }
 .aboutview__body { font-size: 13px; line-height: 1.7; margin: 0 0 14px; }
-.aboutview__availability {
-  margin: 22px 0 0;
-  color: var(--cap);
-  font-size: 11px;
-  line-height: 1.5;
-}
-.aboutview__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  margin-top: 14px;
-  font-size: 11px;
-}
-.aboutview__actions a {
+.aboutview__download {
+  position: fixed;
+  left: calc(var(--edge) + 48px);
+  top: calc(var(--head-h) + clamp(28px, 6vh, 72px));
+  z-index: 2;
+  width: calc(var(--content-left) - 72px);
+  font-size: 13px;
+  line-height: 1.45;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -985,14 +995,6 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 }
 .aboutview__cols ul { list-style: none; margin: 0; padding: 0; }
 .aboutview__cols li { font-size: 13px; line-height: 1.45; padding: 3px 0; }
-.aboutview__experience { display: grid; gap: 14px; }
-.aboutview__experience li { padding: 0; }
-.aboutview__experience strong,
-.aboutview__experience span,
-.aboutview__experience small { display: block; }
-.aboutview__experience strong { font-size: 12px; font-weight: 500; }
-.aboutview__experience span { color: var(--cap); font-size: 11px; }
-.aboutview__experience small { max-width: 58ch; margin-top: 2px; font-size: 11px; line-height: 1.45; }
 /* contact icons, pinned to the left gutter and fixed, so they stay put while
    the about text scrolls. Visibility is tied to the panel's open state (the
    fixed element would otherwise ignore the panel's clip-path reveal). */
@@ -1018,6 +1020,13 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 
 /* narrow screens: the left gutter disappears, so return icons to the flow */
 @media (max-width: 720px) {
+  .aboutview__download {
+    position: static;
+    width: auto;
+    order: 1;
+  }
+  .aboutview__main { order: 2; }
+  .skills-marquee { order: 3; }
   .aboutview__social {
     position: static; opacity: 1; pointer-events: auto;
     flex-direction: row; gap: 16px; margin: 40px 0 0;
