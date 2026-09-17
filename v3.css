@@ -309,14 +309,15 @@ a { color: inherit; text-decoration: none; }
 .feed__item[data-n="4"]  { grid-column: 1 / 8;  grid-row: 4; margin-top: 120px; }
 .feed__item[data-n="5"]  { grid-column: 9 / 13; grid-row: 4; margin-top: 20px; }
 .feed__item[data-n="6"]  { grid-column: 2 / 8;  grid-row: 5; margin-top: 140px; }
-.feed__item[data-n="7"]  { grid-column: 9 / 13; grid-row: 5; margin-top: 60px; }
-.feed__item[data-n="8"]  { grid-column: 3 / 6;  grid-row: 6; margin-top: 120px; }
+/* Orienteering gets a full-width row so the landscape image reads at portfolio scale. */
+.feed__item[data-n="7"]  { grid-column: 1 / -1; grid-row: 6; margin-top: 120px; }
+.feed__item[data-n="8"]  { grid-column: 3 / 6;  grid-row: 7; margin-top: 120px; }
 /* Portrait clips stay vertical regardless of their position in the edited sequence. */
 .feed__item--portrait .feed__media { aspect-ratio: 9 / 16; }
 .feed__item--portrait .feed__media video { width: 100%; height: 100%; object-fit: cover; }
-.feed__item[data-n="9"]  { grid-column: 9 / 13; grid-row: 6; margin-top: 30px; }
-.feed__item[data-n="10"] { grid-column: 3 / 9;  grid-row: 7; margin-top: 120px; }
-.feed__item[data-n="11"] { grid-column: 4 / 11; grid-row: 8; margin-top: 120px; }
+.feed__item[data-n="9"]  { grid-column: 9 / 13; grid-row: 7; margin-top: 30px; }
+.feed__item[data-n="10"] { grid-column: 3 / 9;  grid-row: 8; margin-top: 120px; }
+.feed__item[data-n="11"] { grid-column: 4 / 11; grid-row: 9; margin-top: 120px; }
 
 /* arch/tech filter: s-p.studio-style index, show ONLY the active group as a
    uniform grid of equal image cards, with the name + category overlaid on each
