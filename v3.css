@@ -412,8 +412,7 @@ a { color: inherit; text-decoration: none; }
   aspect-ratio: 4 / 3;
 }
 /* tech index: two rows. NEXA opens on its own, landscape. The row below starts
-   with VORO, also landscape, since both clips carry burned-in horizontal text
-   that a vertical crop would cut in half, then five vertical 9:16 cards.
+   with THRESHLD as a landscape card, followed by four vertical 9:16 cards.
    --tcard is one vertical card; --twide is a landscape card of the SAME media
    height (16/9 squared), so every caption in the row sits on one line. Card
    width tracks viewport height, so both rows fit on a screen. */
@@ -422,7 +421,7 @@ a { color: inherit; text-decoration: none; }
   --tcard: clamp(88px, 13.5vh, 145px);
   --twide: calc(var(--tcard) * 256 / 81);
   display: grid;
-  grid-template-columns: var(--twide) repeat(5, var(--tcard));
+  grid-template-columns: var(--twide) repeat(4, var(--tcard));
   justify-content: center;
   align-content: center;
   align-items: start;
@@ -442,16 +441,16 @@ a { color: inherit; text-decoration: none; }
   justify-self: center;
   width: calc(var(--tcard) * 5.4);
 }
-/* the row below: VORO on the left, landscape, then the vertical cards */
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"]  { grid-area: 2 / 1 / 3 / 2; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="6"]  { grid-area: 2 / 2 / 3 / 3; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="5"]  { grid-area: 2 / 3 / 3 / 4; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="8"]  { grid-area: 2 / 4 / 3 / 5; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="9"]  { grid-area: 2 / 5 / 3 / 6; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="11"] { grid-area: 2 / 6 / 3 / 7; }
+/* the row below: THRESHLD on the left, landscape, then the vertical cards */
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"]  { display: none; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="6"]  { grid-area: 2 / 1 / 3 / 2; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="5"]  { grid-area: 2 / 2 / 3 / 3; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="8"]  { grid-area: 2 / 3 / 3 / 4; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="9"]  { grid-area: 2 / 4 / 3 / 5; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="11"] { grid-area: 2 / 5 / 3 / 6; }
 /* the two 16:9 clips keep their native shape, no crop */
 .feed.is-filtered[data-group="tech"] .feed__item[data-n="0"] .feed__media,
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"] .feed__media {
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="6"] .feed__media {
   aspect-ratio: 16 / 9;
 }
 /* one THRESHLD card is enough in the index, the flagship-store card stays on
