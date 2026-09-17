@@ -545,8 +545,13 @@ function initIndexWheelSlides() {
     if (!feed.classList.contains("is-slide-mode") || !item) return;
     const group = item.dataset.slideGroup;
     feed.querySelectorAll(".feed__item").forEach((entry) => {
-      const sameGroup = group && entry.dataset.slideGroup === group;
+      const sameGroup = Boolean(group && entry.dataset.slideGroup === group);
       entry.classList.toggle("is-slide-active", entry === item || sameGroup);
+    });
+    const activeCategory = Object.entries(GROUPS_V3)
+      .find(([, categories]) => categories.includes(item.dataset.cat))?.[0];
+    head.querySelectorAll('.v3head__nav a[data-group]').forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.group === activeCategory);
     });
   };
 
@@ -616,6 +621,27 @@ function initIndexWheelSlides() {
 /* ---- video performance: play only while in the viewport ---- */
 function initVideoObserver() {
   const vids = document.querySelectorAll("video[data-lazyplay]");
+  const responsiveVids = [...vids].filter((v) => v.dataset.portraitSrc && v.dataset.landscapeSrc);
+  const portraitQuery = matchMedia("(orientation: portrait)");
+  const syncResponsiveSources = () => {
+    responsiveVids.forEach((v) => {
+      const nextSrc = portraitQuery.matches ? v.dataset.portraitSrc : v.dataset.landscapeSrc;
+      if (!nextSrc || v.getAttribute("src") === nextSrc) return;
+      const resume = !v.paused;
+      v.pause();
+      v.setAttribute("src", nextSrc);
+      v.load();
+      if (resume) {
+        v.addEventListener("loadeddata", () => {
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        }, { once: true });
+      }
+    });
+  };
+  syncResponsiveSources();
+  if (portraitQuery.addEventListener) portraitQuery.addEventListener("change", syncResponsiveSources);
+  else if (portraitQuery.addListener) portraitQuery.addListener(syncResponsiveSources);
   vids.forEach(applyClipConfig);
   if (!vids.length || !("IntersectionObserver" in window)) {
     vids.forEach((v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });

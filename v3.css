@@ -102,7 +102,11 @@ a { color: inherit; text-decoration: none; }
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.v3head__nav a.is-active { opacity: 1; text-decoration-thickness: 2px; }
+.v3head__nav a.is-active {
+  opacity: 1;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+}
 
 /* headliner focus: pointing at any one item in the bar pulls it forward and
    pushes everything else back, out of focus. The blur sits on the siblings
@@ -228,12 +232,6 @@ a { color: inherit; text-decoration: none; }
 }
 .feed__cap-year { display: block; color: var(--cap); }
 
-/* hover: gentle lift of the image */
-.feed__item .feed__media img,
-.feed__item .feed__media video { transition: transform .6s ease; }
-.feed__item:hover .feed__media img,
-.feed__item:hover .feed__media video { transform: scale(1.02); }
-
 /* deterministic placement: every project owns a separate row, alternating across
    the grid without ever becoming a side-by-side pair. */
 /* n=0: the lead entry opens full-viewport and full-bleed, with the fixed
@@ -316,11 +314,48 @@ a { color: inherit; text-decoration: none; }
 .feed__item[data-n="2"]  { grid-column: 1 / 8;  grid-row: 3;  margin-top: 70px; }
 .feed__item[data-n="3"]  { grid-column: 8 / 13; grid-row: 4;  margin-top: 90px; }
 .feed__item[data-n="4"]  { grid-column: 1 / 8;  grid-row: 5;  margin-top: 80px; }
-.feed__item[data-n="6"]  { grid-column: 1 / 5;  grid-row: 6;  margin-top: 90px; }
-.feed__item[data-n="10"] { grid-column: 6 / 13; grid-row: 6;  margin-top: 90px; }
+.feed__item[data-n="6"]  { grid-column: 1 / 7;  grid-row: 6;  margin-top: 90px; }
+.feed__item[data-n="10"] { grid-column: 7 / 13; grid-row: 6;  margin-top: 90px; }
 .feed__item[data-n="8"]  { grid-column: 9 / 12; grid-row: 7;  margin-top: 80px; }
 /* Orienteering gets a full-width row so the landscape image reads at portfolio scale. */
-.feed__item[data-n="7"]  { grid-column: 1 / -1; grid-row: 8;  margin-top: 90px; }
+.feed__item[data-n="7"]  {
+  grid-column: 1 / -1;
+  grid-row: 8;
+  position: relative;
+  margin-top: 90px;
+}
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__media {
+  height: calc(100svh - var(--head-h) - 24px);
+  max-height: none;
+  aspect-ratio: auto;
+}
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 44%;
+  background: linear-gradient(to top, rgba(0, 0, 0, .52), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__cap {
+  position: absolute;
+  left: clamp(20px, 3vw, 44px);
+  bottom: clamp(24px, 4vh, 42px);
+  z-index: 2;
+  margin: 0;
+  color: #fff;
+}
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__cap-title {
+  margin-bottom: 8px;
+  font-size: clamp(22px, 2.8vw, 38px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__cap-cat,
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__cap-role,
+.feed:not(.is-filtered) .feed__item[data-n="7"] .feed__cap-year {
+  color: rgba(255, 255, 255, .82);
+}
 /* Portrait clips stay vertical regardless of their position in the edited sequence. */
 .feed__item--portrait .feed__media { aspect-ratio: 9 / 16; }
 .feed__item--portrait .feed__media video { width: 100%; height: 100%; object-fit: cover; }
@@ -329,10 +364,16 @@ a { color: inherit; text-decoration: none; }
 .feed__item[data-n="11"] { grid-column: 4 / 11; grid-row: 11; margin-top: 110px; }
 
 @media (min-width: 821px) {
-  /* Keep the portrait clip compact enough to balance the landscape companion. */
+  /* The portrait clip anchors the left edge and fills the complete viewing area
+     below the fixed headliner, while preserving its native 9:16 proportion. */
+  .feed:not(.is-filtered) .feed__item--threshld-primary {
+    justify-self: start;
+    width: min(calc((100svh - var(--head-h) - 24px) * .495), 100%);
+  }
   .feed:not(.is-filtered) .feed__item--threshld-primary .feed__media {
-    height: min(50svh, 470px);
-    aspect-ratio: auto;
+    width: 100%;
+    height: calc((100svh - var(--head-h) - 24px) * .88);
+    aspect-ratio: 9 / 16;
   }
 }
 
@@ -524,26 +565,36 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 
 .case3__hero {
+  position: relative;
   width: 100%;
-  height: min(88vh, 820px);
+  height: 100svh;
+  margin-top: calc(var(--head-h) * -1);
   overflow: hidden;
   background: #f3f3f3;
 }
 .case3__hero img,
 .case3__hero video { width: 100%; height: 100%; object-fit: cover; }
+.case3__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--head-h) + 50px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
 
 /* show the whole frame instead of cropping to the band (VORO's UI capture) */
 .case3__hero--contain {
-  height: auto;
+  height: 100svh;
   display: flex;
   justify-content: center;
 }
 .case3__hero--contain img,
 .case3__hero--contain video {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: min(88vh, 820px);
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -1028,6 +1079,11 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
     margin: 0 0 48px !important;
     width: 100%;
   }
+  /* THRESHLD keeps the requested 1:1.5 width relationship when the pair
+     collapses to a vertical stack on narrow screens. */
+  .feed:not(.is-filtered) .feed__item--threshld-primary {
+    width: 66.667% !important;
+  }
   /* the opener remains full-viewport and full-bleed on mobile */
   .feed:not(.is-filtered) .feed__item[data-n="0"] {
     margin: calc((var(--head-h) + 16px) * -1) calc(var(--edge) * -1) 48px !important;
@@ -1058,7 +1114,7 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 
   .foot3 { flex-direction: column; align-items: flex-start; gap: 16px; }
 
-  .case3__hero { height: 56vh; }
+  .case3__hero { height: 100svh; }
   .case3__meta { grid-template-columns: 1fr; }
   .case3__meta-left, .case3__meta-main, .case3__meta-copy { grid-column: 1; }
   .case3__meta-main { flex-direction: column; align-items: flex-start; gap: 6px; }
