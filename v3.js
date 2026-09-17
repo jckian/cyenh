@@ -508,38 +508,64 @@ function initHeroHeader() {
   addEventListener("resize", syncHeroHeader);
 }
 
-/* ---- presentation-style opener: while the page is still at the top, two mouse
-   wheel notches (or one short trackpad gesture) advance past the full-screen NEXA
-   slide. It runs once per visit; the rest of the index keeps native scrolling. ---- */
-function initLeadWheelSnap() {
+/* ---- presentation-style index: one wheel gesture advances one project.
+   The collage stays deliberately staggered, so neighbouring cards remain separate
+   stops even when they share a CSS grid row. Filters, touch layouts and the page
+   beyond the final project keep native scrolling. ---- */
+function initIndexWheelSlides() {
   const feed = document.querySelector(".feed");
-  const hero = document.querySelector('.feed__item[data-n="0"]');
-  if (!feed || !hero) return;
+  const head = document.querySelector(".v3head");
+  if (!feed || !head) return;
 
-  let wheelDistance = 0;
-  let resetTimer = 0;
-  let hasSnapped = false;
-  let isAnimating = false;
+  let locked = false;
+  let lockStarted = 0;
+  let lastWheel = 0;
+  let unlockTimer = 0;
+
+  const targets = () => {
+    return [...feed.querySelectorAll(".feed__item")]
+      .filter((item) => getComputedStyle(item).display !== "none")
+      .map((item) => item.dataset.n === "0" ? 0 : Math.max(0, Math.round(
+        item.getBoundingClientRect().top + scrollY - head.offsetHeight - 24
+      )))
+      .sort((a, b) => a - b)
+      .filter((value, index, list) => index === 0 || value !== list[index - 1]);
+  };
+
+  const scheduleUnlock = () => {
+    clearTimeout(unlockTimer);
+    unlockTimer = setTimeout(() => {
+      const now = Date.now();
+      if (now - lastWheel >= 160 && now - lockStarted >= 520) locked = false;
+      else scheduleUnlock();
+    }, 170);
+  };
 
   addEventListener("wheel", (event) => {
-    if (hasSnapped || isAnimating || event.deltaY <= 0 || feed.classList.contains("is-filtered")) return;
+    if (innerWidth <= 820 || matchMedia("(pointer: coarse)").matches
+      || feed.classList.contains("is-filtered") || event.ctrlKey
+      || Math.abs(event.deltaY) < 2 || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
 
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    const nearTop = scrollY < Math.min(160, innerHeight * 0.18) && heroBottom > innerHeight * 0.7;
-    if (!nearTop) return;
+    if (locked) {
+      event.preventDefault();
+      lastWheel = Date.now();
+      scheduleUnlock();
+      return;
+    }
+
+    const stops = targets();
+    const tolerance = 28;
+    const destination = event.deltaY > 0
+      ? stops.find((stop) => stop > scrollY + tolerance)
+      : [...stops].reverse().find((stop) => stop < scrollY - tolerance);
+    if (destination === undefined) return;
 
     event.preventDefault();
-    wheelDistance += Math.abs(event.deltaY);
-    clearTimeout(resetTimer);
-    resetTimer = setTimeout(() => { wheelDistance = 0; }, 600);
-    if (wheelDistance < 150) return;
-
-    hasSnapped = true;
-    isAnimating = true;
-    clearTimeout(resetTimer);
+    locked = true;
+    lockStarted = lastWheel = Date.now();
+    scheduleUnlock();
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    scrollTo({ top: scrollY + heroBottom, behavior: reduced ? "auto" : "smooth" });
-    setTimeout(() => { isAnimating = false; }, reduced ? 0 : 850);
+    scrollTo({ top: destination, behavior: reduced ? "auto" : "smooth" });
   }, { passive: false });
 }
 
