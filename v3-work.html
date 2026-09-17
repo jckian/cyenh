@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Spectral:ital,wght@1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v3.css?v=20260917-10" />
+  <link rel="stylesheet" href="v3.css?v=20260917-13" />
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 
   <main class="case3" id="case"></main>
 
-  <script src="v3.js?v=20260917-5"></script>
+  <script src="v3.js?v=20260917-6"></script>
   <script>
     (function () {
       const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -39,6 +39,8 @@
       let id = params.get('p');
       if (!PROJECTS_V3[id]) id = ORDER_V3[0];
       const p = PROJECTS_V3[id];
+      const caseRoot = document.getElementById('case');
+      caseRoot.dataset.project = id;
       document.title = `Yenhsing Cheng · ${p.title}`;
 
       /* Desktop heroes use 1080p masters; mobile keeps the lighter files.
@@ -161,7 +163,7 @@
           <a class="next" href="v3-work.html?p=${nextId}"><span class="dir">Next →</span><span class="nm">${esc(PROJECTS_V3[nextId].title)}</span></a>
         </nav>`;
 
-      document.getElementById('case').innerHTML = topHTML + essayHTML + repoHTML + navHTML;
+      caseRoot.innerHTML = topHTML + essayHTML + repoHTML + navHTML;
 
       /* portrait tech videos render at natural aspect, right-aligned */
       if (GROUPS_V3.tech.includes(CAT_V3[id])) {

@@ -543,8 +543,11 @@ function initIndexWheelSlides() {
 
   const setActive = (item) => {
     if (!feed.classList.contains("is-slide-mode") || !item) return;
-    feed.querySelectorAll(".is-slide-active").forEach((entry) => entry.classList.toggle("is-slide-active", entry === item));
-    item.classList.add("is-slide-active");
+    const group = item.dataset.slideGroup;
+    feed.querySelectorAll(".feed__item").forEach((entry) => {
+      const sameGroup = group && entry.dataset.slideGroup === group;
+      entry.classList.toggle("is-slide-active", entry === item || sameGroup);
+    });
   };
 
   const syncActive = () => {
