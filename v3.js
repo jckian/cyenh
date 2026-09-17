@@ -362,7 +362,7 @@ function initCoverPlaylist(list, startIdx) {
   cyclePlaylist(heroVideo(), list, startIdx);
 }
 
-const heroVideo = () => document.querySelector(".case3__hero video, .case3__vtop-media video");
+const heroVideo = () => document.querySelector(".case3__hero video, .case3__vhero video");
 
 /* the index hands the clicked clip's playhead over in sessionStorage; the hero picks
    it up so the video keeps running instead of restarting. Returns the playlist index

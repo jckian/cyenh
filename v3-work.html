@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Spectral:ital,wght@1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v3.css?v=20260917-5" />
+  <link rel="stylesheet" href="v3.css?v=20260917-7" />
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 
   <main class="case3" id="case"></main>
 
-  <script src="v3.js?v=20260917-1"></script>
+  <script src="v3.js?v=20260917-2"></script>
   <script>
     (function () {
       const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -81,45 +81,34 @@
         ? `<video src="${hero}" poster="${posterForV3(hero)}" muted loop playsinline preload="metadata" data-lazyplay></video>`
         : `<img src="${hero}" alt="${esc(p.title)}, cover">`}</div>`;
 
-      /* metadata row */
+      /* title spans the full text block; project info and intro sit below it */
       const metaHTML = `
         <div class="case3__meta">
-          <div class="case3__meta-left">
-            <div class="case3__cat">${esc(p.cat)}</div>
-            ${infoHTML}
-          </div>
           <div class="case3__meta-main">
             <h1 class="case3__title">${esc(p.title)}</h1>
             <div class="case3__where">
               <span class="yr">${esc(p.year)}</span>
             </div>
           </div>
-        </div>`;
-
-      /* intro only, the long `body` essay is omitted to match v2's lean,
-         gallery-first case template */
-      let textHTML = '';
-      if (p.intro) textHTML += `<p class="case3__intro reveal">${esc(p.intro)}</p>`;
-
-      /* portrait-cover pages: info column on the left, the FULL portrait
-         video on the right (never cropped by the hero band) */
-      const topHTML = p.coverPortrait
-        ? `
-        <div class="case3__vtop">
-          <div class="case3__vtop-info">
+          <div class="case3__meta-left">
             <div class="case3__cat">${esc(p.cat)}</div>
-            <h1 class="case3__title">${esc(p.title)}</h1>
-            <div class="case3__where">
-              <span class="yr">${esc(p.year)}</span>
-            </div>
             ${infoHTML}
+          </div>
+          <div class="case3__meta-copy">
             ${p.intro ? `<p class="case3__intro reveal">${esc(p.intro)}</p>` : ''}
           </div>
-          <figure class="case3__vtop-media">
+        </div>`;
+
+      /* Portrait covers keep their full frame in a dedicated hero band; the
+         same title / info / intro structure follows on every project page. */
+      const topHTML = p.coverPortrait
+        ? `
+        <div class="case3__vhero">
+          <figure>
             <video src="${hero}" poster="${posterForV3(hero)}" muted loop playsinline preload="metadata" data-lazyplay></video>
           </figure>
-        </div>`
-        : heroHTML + metaHTML + textHTML;
+        </div>${metaHTML}`
+        : heroHTML + metaHTML;
 
       /* essay */
       let essayHTML = '';
