@@ -486,9 +486,8 @@ function initCardTransition() {
   });
 }
 
-/* ---- the full-screen opener runs under the fixed header, so the header drops its
-   white background (and turns white itself) until it scrolls clear of the footage.
-   Filtering the index removes the full-screen treatment, so re-sync on that too. ---- */
+/* ---- retain the overlay-header behaviour only if a hero is deliberately moved
+   under the headliner; the current index hero begins immediately below it. ---- */
 let syncHeroHeader = () => {};
 
 function initHeroHeader() {
@@ -498,8 +497,10 @@ function initHeroHeader() {
   if (!head || !hero) return;
 
   syncHeroHeader = () => {
+    const heroRect = hero.getBoundingClientRect();
     const over = !feed.classList.contains("is-filtered")
-      && hero.getBoundingClientRect().bottom > head.offsetHeight;
+      && heroRect.top < head.offsetHeight / 2
+      && heroRect.bottom > head.offsetHeight;
     head.classList.toggle("is-over", over);
   };
 
@@ -508,9 +509,8 @@ function initHeroHeader() {
   addEventListener("resize", syncHeroHeader);
 }
 
-/* ---- presentation-style index: one wheel gesture advances one project.
-   The collage stays deliberately staggered, so neighbouring cards remain separate
-   stops even when they share a CSS grid row. Filters, touch layouts and the page
+/* ---- presentation-style index: one wheel gesture advances one project and makes
+   that project the single crisp focal point. Filters, touch layouts and the page
    beyond the final project keep native scrolling. ---- */
 function initIndexWheelSlides() {
   const feed = document.querySelector(".feed");
@@ -521,22 +521,47 @@ function initIndexWheelSlides() {
   let lockStarted = 0;
   let lastWheel = 0;
   let unlockTimer = 0;
+  let syncFrame = 0;
 
   const targets = () => {
     return [...feed.querySelectorAll(".feed__item")]
       .filter((item) => getComputedStyle(item).display !== "none")
-      .map((item) => item.dataset.n === "0" ? 0 : Math.max(0, Math.round(
-        item.getBoundingClientRect().top + scrollY - head.offsetHeight - 24
-      )))
-      .sort((a, b) => a - b)
-      .filter((value, index, list) => index === 0 || value !== list[index - 1]);
+      .map((item) => ({
+        item,
+        top: item.dataset.n === "0" ? 0 : Math.max(0, Math.round(
+          item.getBoundingClientRect().top + scrollY - head.offsetHeight - 24
+        ))
+      }))
+      .sort((a, b) => a.top - b.top);
+  };
+
+  const setMode = () => {
+    const enabled = innerWidth > 820 && !matchMedia("(pointer: coarse)").matches;
+    feed.classList.toggle("is-slide-mode", enabled);
+    if (!enabled) feed.querySelectorAll(".is-slide-active").forEach((item) => item.classList.remove("is-slide-active"));
+  };
+
+  const setActive = (item) => {
+    if (!feed.classList.contains("is-slide-mode") || !item) return;
+    feed.querySelectorAll(".is-slide-active").forEach((entry) => entry.classList.toggle("is-slide-active", entry === item));
+    item.classList.add("is-slide-active");
+  };
+
+  const syncActive = () => {
+    if (locked || !feed.classList.contains("is-slide-mode") || feed.classList.contains("is-filtered")) return;
+    const stops = targets();
+    const nearest = stops.reduce((best, stop) => Math.abs(stop.top - scrollY) < Math.abs(best.top - scrollY) ? stop : best, stops[0]);
+    if (nearest) setActive(nearest.item);
   };
 
   const scheduleUnlock = () => {
     clearTimeout(unlockTimer);
     unlockTimer = setTimeout(() => {
       const now = Date.now();
-      if (now - lastWheel >= 160 && now - lockStarted >= 520) locked = false;
+      if (now - lastWheel >= 160 && now - lockStarted >= 520) {
+        locked = false;
+        syncActive();
+      }
       else scheduleUnlock();
     }, 170);
   };
@@ -556,17 +581,33 @@ function initIndexWheelSlides() {
     const stops = targets();
     const tolerance = 28;
     const destination = event.deltaY > 0
-      ? stops.find((stop) => stop > scrollY + tolerance)
-      : [...stops].reverse().find((stop) => stop < scrollY - tolerance);
+      ? stops.find((stop) => stop.top > scrollY + tolerance)
+      : [...stops].reverse().find((stop) => stop.top < scrollY - tolerance);
     if (destination === undefined) return;
 
     event.preventDefault();
     locked = true;
     lockStarted = lastWheel = Date.now();
     scheduleUnlock();
+    setActive(destination.item);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    scrollTo({ top: destination, behavior: reduced ? "auto" : "smooth" });
+    scrollTo({ top: destination.top, behavior: reduced ? "auto" : "smooth" });
   }, { passive: false });
+
+  addEventListener("scroll", () => {
+    if (syncFrame) return;
+    syncFrame = requestAnimationFrame(() => {
+      syncFrame = 0;
+      syncActive();
+    });
+  }, { passive: true });
+  addEventListener("resize", () => {
+    setMode();
+    syncActive();
+  });
+
+  setMode();
+  syncActive();
 }
 
 /* ---- video performance: play only while in the viewport ---- */
