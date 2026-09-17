@@ -8,7 +8,8 @@
 const PROJECTS_V3 = {
   "voro": {
     title: "VORO", cat: "Computational Design / Design Tech", year: "2026", tag: "Generative",
-    role: "System design, computational workflow, real-time 3D front-end",
+    period: "2026", status: "Independent research · functional prototype", orgLabel: "Studio", team: "Independent work",
+    role: "Designed the system architecture and computational workflow, and developed the real-time 3D interface for testing program, massing, and structure together.",
     client: "SCI-Arc · independent study",
     services: "Generative design, computational massing, structural synthesis, real-time 3D",
     intro: "VORO is a browser-based design tool that develops program, massing, and structure together. It gives designers early feedback on spatial and structural decisions before the project moves into detailed modelling.",
@@ -20,9 +21,10 @@ const PROJECTS_V3 = {
   },
   "01": {
     title: "Orienteering", cat: "Memory / Landscape", year: "2022", tag: "Landscape",
-    team: "5-Person Teamwork",
-    role: "Architectural design & programming",
-    client: "NYCU GIA Studio · 5-person team",
+    period: "Summer 2022 · 5 weeks", status: "Academic project · design proposal", orgLabel: "Studio",
+    team: "5-person team",
+    role: "Led spatial and tectonic design development through architectural coordination, landscape integration, visualization, and multi-scalar proposal strategies.",
+    client: "NYCU GIA Studio",
     services: "Landscape regeneration, branding",
     intro: "On Xiju, a decommissioned military outpost becomes the starting point for a network of walking routes. The proposal reuses its existing section as three landscape layers: planting on the upper slope, stone rooms at grade, and water within the tunnels. Terraced paths, drainage, and small architectural interventions connect the bunkers without erasing their material character.",
     body: "Xiju sits at Taiwan's maritime edge, roughly an hour by boat from Nangan and Beigan. That distance has shaped its ecology and its culture, and the island reads as an island inside an island, with spatial and social conditions unlike the rest of the Matsu archipelago.\n\nFormer Military Outpost No. 32 holds the westernmost tip, on hilly ground where sandstone cliffs drop into the sea. The landscape here was made by military necessity, laid down by soldiers stationed on the island 40 to 50 years ago, so vegetation and ecology still change with elevation and with the defensive job each level once had.\n\nThe project treats that inheritance as structure rather than ruin. The outpost already carries a sectional logic of protection, enclosure and layered material. That logic is kept and given new work to do: drainage, insulation and half-buried rooms set into the terrain. Military construction becomes landscape infrastructure.\n\nThree layers organise the proposal. Plant at +240M, where new planting reinterprets Matsu's military landscape and covers the rear hillside with newly formed terrain. Stone at ±0M, where stacked stone separates the programmes so the rooms feel cut out of the mountain. Water at −400M, where water is drained into the tunnel system to form public and private bathing spaces, which also settles the damp that has always sat inside the rock.\n\nAbove all of it, 'Orienteering' works as a brand for the island. Five routes, one each for sight, sound, smell, taste and touch, take travellers through Matsu's battlefield culture on their own legs. The visit becomes a journey rather than a destination, and no two visits have to read the same way. As the stronghold retires from military duty it merges back into the earth. As one disappears, one emerges.\n\nInstructors: Shu-Chang Kung, Ling-Li Tseng. 5 weeks, Summer 2022.",
@@ -52,9 +54,10 @@ const PROJECTS_V3 = {
   },
   "02": {
     title: "1 House for All", cat: "Housing / Community", year: "2022", tag: "Housing",
-    team: "30-Person Teamwork",
+    period: "Fall 2021 – Spring 2022", status: "International competition · 1:1 demonstration unit", orgLabel: "Studio",
+    team: "30-person team",
     award: "Solar Decathlon Europe 21/22, Architecture First Prize",
-    role: "Design development & BIM coordination",
+    role: "Contributed to design development and BIM coordination, integrating the mass-timber structure, modular façade, shared service core, and full-scale prototype documentation.",
     client: "NYCU / TDIS · international competition",
     services: "Sustainable housing, mass timber",
     intro: "1 House for All places shared, net-zero transitional housing on vacant lots created by Taiwan's slow urban-renewal process. A shared ground floor, flexible dwelling levels, and rooftop day care are organised around one service core. The mass-timber structure, reusable façade, and integrated energy systems were tested through a full-scale demonstration unit built by the team.",
@@ -69,8 +72,9 @@ const PROJECTS_V3 = {
   },
   "03": {
     title: "Banqiao Station", cat: "Public / Practice", year: "2023", tag: "Public",
-    team: "3-Person Team · Professional Practice",
-    role: "Architectural design & coordination",
+    period: "2023", status: "Professional project · design development", orgLabel: "Practice",
+    team: "3-person team",
+    role: "Developed the architectural design and construction documentation, coordinating plans, sections, façade details, and buildability constraints across the project team.",
     client: "Professional practice · MRT Banqiao Station",
     services: "Transit infrastructure, detailing",
     intro: "Designed in professional practice, this new entrance for Banqiao MRT Station uses an arched canopy to extend the landscaped edge and clarify the route into the concourse. An open double-height ground level improves circulation, while a two-metre cantilever and rain-screen louvers provide better protection from wind-driven rain. The work included plans, sections, details, and coordination within construction constraints.",
@@ -91,8 +95,9 @@ const PROJECTS_V3 = {
   },
   "04": {
     title: "Earthen", cat: "Climate / Housing", year: "2025", tag: "Climate",
-    team: "7-Person Teamwork",
-    role: "Structural design, prototyping, glazing, robotic 3D printing",
+    period: "Fall 2025 · 15 weeks", status: "Academic research · half-scale prototype", orgLabel: "Studio",
+    team: "7-person team",
+    role: "Developed and tested the envelope system through structural design, robotic ceramic printing, glaze studies, assembly details, and half-scale prototype fabrication.",
     client: "SCI-Arc · Herwig Baumgartner",
     services: "Post-disaster housing, ceramic fabrication",
     intro: "Earthen is a transitional ADU proposal for households displaced by California wildfires. Rammed-earth walls and robotically printed ceramic modules form a durable envelope; grooves and pockets direct rainwater and support planting. The system was tested through robotic printing, glaze studies, window and planter details, and a half-scale wall prototype.",
@@ -115,9 +120,10 @@ const PROJECTS_V3 = {
   },
   "05": {
     title: "DreamStudio", cat: "Generative AI / Game Design", year: "2022", tag: "Virtual",
-    team: "5-Person Teamwork",
-    role: "Spatial design, AI image generation, diagrams, film editing",
-    client: "NYCU competition · 5-person team",
+    period: "Fall 2022 · 10 days", status: "Design competition · playable prototype", orgLabel: "Studio",
+    team: "5-person team",
+    role: "Developed the spatial narrative through AI image generation, Rhino modelling, Unreal Engine world-building, diagrams, and film editing.",
+    client: "NYCU competition",
     services: "Generative AI, cognitive mapping, game design",
     intro: "DreamStudio uses AI-generated images as source material for a playable environment built in Rhino and Unreal Engine. The project translates participants' spatial memories into a shared, navigable world.",
     body: "DreamStudio is a design competition at NYCU exploring how an AI image generator can drive program definition and design concepts. Building on Edward Tolman's 1948 theory of cognitive maps, the mental, first-person representations of space built from both objective spatial features and subjective experience, the team developed a methodology that transforms collective memory into virtual spaces, generating layered conceptual experiences. Conceptual, emotional and contextual prompts are fed through neural networks (DreamStudio → Rhino → Unreal Engine) to deconstruct and recombine existing spaces into a playable virtual world. As an electronic extension of the body, the resulting space is navigated with simple keyboard and mouse, its discontinuous scales and atmospheres producing an uncanny experience distinct from physical space. 5-person team · 10 days, Fall 2022.",
@@ -145,7 +151,8 @@ const PROJECTS_V3 = {
   },
   "threshld": {
     title: "THRESHLD", cat: "Generative / Product / Flagship Store", year: "2026", tag: "Generative",
-    role: "Product design, inflatable mechanism, material studies & spatial design",
+    period: "2026", status: "Academic project · working prototypes", orgLabel: "Type", team: "Independent work",
+    role: "Developed the wearable and spatial concept through inflatable mechanism design, material studies, generative workflows, and translation into an ETFE façade system.",
     client: "Flagship store concept · independent study",
     services: "Generative AI workflow, wearable design, soft robotics, ETFE flagship store",
     intro: "THRESHLD began as an inflatable wearable that responds when the wearer slouches. Its three-stage mechanism moves from reminder to warning to supported rest, while material tests define colour and transparency. The same principle is scaled into an ETFE storefront in Chinatown, where the envelope changes with the posture of people inside. Product and space were developed through one generative workflow.",
@@ -162,8 +169,9 @@ const PROJECTS_V3 = {
     ]
   },
   "archive": {
-    title: "Archive", cat: "Scraps", year: "Various", tag: "Archive",
-    role: "", client: "", services: "",
+    title: "Archive", cat: "Early Experiments", year: "Various", tag: "Archive",
+    period: "2019–2021", status: "Academic studies · full-scale prototypes", orgLabel: "Type", team: "Individual + team work",
+    role: "Developed interaction logic, physical prototypes, and structural tests across responsive installations and full-scale pavilion studies.", client: "Independent + academic studies", services: "",
     intro: "Two early studies in responsive structures and full-scale prototyping. Kaleidoscope is an Arduino-controlled kinetic installation that unfolds when a viewer approaches. The Gongguan transit pavilion was developed through a full-scale mock-up and structural load testing.",
     body: "",
     layout: "archive",
@@ -177,8 +185,9 @@ const PROJECTS_V3 = {
   },
   "hiyou": {
     title: "HiYou", cat: "AI / Interactive Installation", year: "2026", tag: "AI",
-    team: "2-Person Teamwork",
-    role: "System design, Unity front-end, Python back-end, computer vision pipeline",
+    period: "2026", status: "Academic installation · live tested", orgLabel: "Studio",
+    team: "2-person team",
+    role: "Designed the interaction system and built the Unity front end, Python back end, and computer-vision pipeline for real-time matching and portrait generation.",
     client: "SCI-Arc · AT Studio 1",
     services: "Real-time computer vision, speech recognition, generative portrait, interactive installation",
     intro: "HiYou is a live installation designed to help strangers meet. A Unity front end and Python back end analyse facial and vocal cues from a short interaction, match participants, and generate a composite portrait that helps them find each other in the room. The system runs locally and was tested with participants at L-Acoustics.",
@@ -195,8 +204,9 @@ const PROJECTS_V3 = {
   },
   "sciarc-gala": {
     title: "SCI-Arc Gala", cat: "Film / Installation", year: "2025", tag: "Event",
-    team: "3-Person Teamwork",
-    role: "Assisted M. Casey Rehm with image sequences, motion narratives and projection output",
+    period: "Fall 2025", status: "Commissioned installation · projected at full scale", orgLabel: "Client",
+    team: "3-person team",
+    role: "Developed image sequences, motion transitions, and projection-ready outputs with M. Casey Rehm for the building-scale installation.",
     client: "SCI-Arc · M. Casey Rehm", services: "",
     intro: "For the 2025 SCI-Arc Gala, I worked with M. Casey Rehm on image sequences, motion transitions, and projection output for the Los Angeles Central Library façade. Architectural drawings and generated imagery were edited into a continuous film for the building-scale installation.",
     body: "",
@@ -218,7 +228,7 @@ const PROJECTS_V3 = {
 /* ---- v3-only additions ---- */
 
 /* display / prev-next order (matches index.html), independent of object key order */
-const ORDER_V3 = ["voro", "threshld", "01", "02", "03", "04", "05", "hiyou", "sciarc-gala", "archive"];
+const ORDER_V3 = ["03", "04", "voro", "02", "hiyou", "threshld", "01", "sciarc-gala", "05", "archive"];
 
 /* right-column location text on case pages (§4 of the plan) */
 const SITES_V3 = {

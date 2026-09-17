@@ -63,13 +63,18 @@ a { color: inherit; text-decoration: none; }
   text-underline-offset: 3px;
 }
 #projLabel { cursor: pointer; }
-#projLabel:hover { opacity: .55; }
 .v3head__main {
   grid-column: 2;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
+}
+.v3head__identity {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-width: 0;
 }
 .v3head__logo {
   font-size: 30px;
@@ -78,6 +83,14 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
   white-space: nowrap;
 }
+.v3head__role {
+  color: var(--cap);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.v3head.is-over .v3head__role { color: rgba(255, 255, 255, .72); }
 .v3head__nav {
   display: flex;
   gap: 22px;
@@ -88,10 +101,40 @@ a { color: inherit; text-decoration: none; }
 .v3head__nav a {
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity .25s;
 }
-.v3head__nav a:hover { opacity: .55; }
 .v3head__nav a.is-active { opacity: 1; text-decoration-thickness: 2px; }
+
+/* headliner focus: pointing at any one item in the bar pulls it forward and
+   pushes everything else back, out of focus. The blur sits on the siblings
+   rather than the hovered item, so the bar reads as one row with a single
+   thing in focus instead of a row of separate hover states. */
+.v3head__label,
+.v3head__logo,
+.v3head__role,
+.v3head__nav a {
+  transition: filter .3s ease, opacity .3s ease;
+}
+.v3head:hover .v3head__label,
+.v3head:hover .v3head__logo,
+.v3head:hover .v3head__role,
+.v3head:hover .v3head__nav a {
+  filter: blur(1.2px);
+  opacity: .4;
+}
+.v3head .v3head__label:hover,
+.v3head .v3head__logo:hover,
+.v3head .v3head__identity:hover .v3head__role,
+.v3head .v3head__nav a:hover {
+  filter: none;
+  opacity: 1;
+}
+/* a touch screen has no hover, so nothing should ever be left blurred there */
+@media (hover: none) {
+  .v3head:hover .v3head__label,
+  .v3head:hover .v3head__logo,
+  .v3head:hover .v3head__role,
+  .v3head:hover .v3head__nav a { filter: none; opacity: 1; }
+}
 
 /* ============================================================
    HOME (v3.html)
@@ -146,7 +189,23 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.5;
 }
 .feed__cap-title { display: block; }
+.feed__position {
+  display: none;
+  margin-bottom: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
 .feed__cap-cat { display: block; text-transform: uppercase; color: var(--cap); }
+.feed__cap-role {
+  display: block;
+  max-width: 42ch;
+  margin-top: 2px;
+  color: var(--cap);
+  font-size: 11px;
+  font-weight: 400;
+}
 /* one-line description, only used by the lead entry */
 .feed__cap-note { display: block; max-width: 64ch; color: var(--cap); }
 .feed__cap-year { display: block; color: var(--cap); }
@@ -208,6 +267,7 @@ a { color: inherit; text-decoration: none; }
 }
 .feed__item[data-n="0"] .feed__cap-cat,
 .feed__item[data-n="0"] .feed__cap-note,
+.feed__item[data-n="0"] .feed__cap-role,
 .feed__item[data-n="0"] .feed__cap-year { color: rgba(255, 255, 255, .8); }
 .feed__item[data-n="0"] .feed__cap-note { font-size: 13px; }
 
@@ -235,13 +295,13 @@ a { color: inherit; text-decoration: none; }
 .feed__item[data-n="3"]  { grid-column: 8 / 13; grid-row: 3; margin-top: 190px; }
 /* Orienteering runs wide and flush to the left edge, the biggest card in its row */
 .feed__item[data-n="4"]  { grid-column: 1 / 8;  grid-row: 4; margin-top: 120px; }
-.feed__item[data-n="5"]  { grid-column: 8 / 13; grid-row: 4; margin-top: 20px; }
+.feed__item[data-n="5"]  { grid-column: 9 / 13; grid-row: 4; margin-top: 20px; }
 .feed__item[data-n="6"]  { grid-column: 2 / 8;  grid-row: 5; margin-top: 140px; }
 .feed__item[data-n="7"]  { grid-column: 9 / 13; grid-row: 5; margin-top: 60px; }
 .feed__item[data-n="8"]  { grid-column: 3 / 6;  grid-row: 6; margin-top: 120px; }
-/* HiYou is a 9:16 portrait clip, show its home-feed card vertical */
-.feed__item[data-n="8"] .feed__media { aspect-ratio: 9 / 16; }
-.feed__item[data-n="8"] .feed__media video { width: 100%; height: 100%; object-fit: cover; }
+/* Portrait clips stay vertical regardless of their position in the edited sequence. */
+.feed__item--portrait .feed__media { aspect-ratio: 9 / 16; }
+.feed__item--portrait .feed__media video { width: 100%; height: 100%; object-fit: cover; }
 .feed__item[data-n="9"]  { grid-column: 9 / 13; grid-row: 6; margin-top: 30px; }
 .feed__item[data-n="10"] { grid-column: 3 / 9;  grid-row: 7; margin-top: 120px; }
 .feed__item[data-n="11"] { grid-column: 4 / 11; grid-row: 8; margin-top: 120px; }
@@ -302,20 +362,20 @@ a { color: inherit; text-decoration: none; }
   width: calc(var(--tcard) * 5.4);
 }
 /* the row below: VORO on the left, landscape, then the vertical cards */
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="1"]  { grid-area: 2 / 1 / 3 / 2; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="2"]  { grid-area: 2 / 2 / 3 / 3; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="8"]  { grid-area: 2 / 3 / 3 / 4; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="9"]  { grid-area: 2 / 4 / 3 / 5; }
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="10"] { grid-area: 2 / 5 / 3 / 6; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"]  { grid-area: 2 / 1 / 3 / 2; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="6"]  { grid-area: 2 / 2 / 3 / 3; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="5"]  { grid-area: 2 / 3 / 3 / 4; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="8"]  { grid-area: 2 / 4 / 3 / 5; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="9"]  { grid-area: 2 / 5 / 3 / 6; }
 .feed.is-filtered[data-group="tech"] .feed__item[data-n="11"] { grid-area: 2 / 6 / 3 / 7; }
 /* the two 16:9 clips keep their native shape, no crop */
 .feed.is-filtered[data-group="tech"] .feed__item[data-n="0"] .feed__media,
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="1"] .feed__media {
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"] .feed__media {
   aspect-ratio: 16 / 9;
 }
 /* one THRESHLD card is enough in the index, the flagship-store card stays on
    the home collage, where both still read as separate pieces of the project */
-.feed.is-filtered[data-group="tech"] .feed__item[data-n="3"] { display: none; }
+.feed.is-filtered[data-group="tech"] .feed__item[data-n="10"] { display: none; }
 .feed.is-filtered .feed__media img,
 .feed.is-filtered .feed__media video {
   width: 100%;
@@ -503,6 +563,28 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 .case3__where { font-size: 12px; text-align: right; white-space: nowrap; }
 .case3__where span { display: block; }
 .case3__where .yr { color: var(--cap); }
+.case3__info {
+  display: grid;
+  gap: 14px;
+  margin: 22px 0 0;
+  max-width: 18em;
+}
+.case3__info-row { margin: 0; }
+.case3__info dt {
+  margin: 0;
+  color: var(--cap);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.case3__info dd {
+  margin: 3px 0 0;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+}
 
 /* intro (big narrative) + body */
 .case3__intro {
@@ -568,6 +650,7 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 .case3__vtop-info .case3__title { margin-top: 28px; }
 .case3__vtop-info .case3__where { margin-top: 10px; text-align: left; }
 .case3__vtop-info .case3__intro { margin: 48px 0 0; max-width: 34em; }
+.case3__vtop-info .case3__info { margin-top: 28px; max-width: 30em; }
 .case3__vtop-media { margin: 0; }
 .case3__vtop-media video {
   height: min(calc(100vh - var(--head-h) - 40px), 780px);
@@ -760,7 +843,32 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 }
 /* text column starts where the feed's content does (col 4 of 12 = the logo's edge) */
 .aboutview__main { flex: 1 1 auto; min-width: 0; max-width: 760px; margin-left: var(--content-left); }
+.aboutview__eyebrow {
+  margin: 0 0 18px;
+  color: var(--cap);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
 .aboutview__body { font-size: 13px; line-height: 1.7; margin: 0 0 14px; }
+.aboutview__availability {
+  margin: 22px 0 0;
+  color: var(--cap);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.aboutview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 14px;
+  font-size: 11px;
+}
+.aboutview__actions a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .aboutview__cols { display: flex; flex-direction: column; gap: 26px; margin-top: 44px; }
 .aboutview__cols h3 {
   font-size: 11px; font-weight: 400; letter-spacing: .14em;
@@ -768,6 +876,14 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
 }
 .aboutview__cols ul { list-style: none; margin: 0; padding: 0; }
 .aboutview__cols li { font-size: 13px; line-height: 1.45; padding: 3px 0; }
+.aboutview__experience { display: grid; gap: 14px; }
+.aboutview__experience li { padding: 0; }
+.aboutview__experience strong,
+.aboutview__experience span,
+.aboutview__experience small { display: block; }
+.aboutview__experience strong { font-size: 12px; font-weight: 500; }
+.aboutview__experience span { color: var(--cap); font-size: 11px; }
+.aboutview__experience small { max-width: 58ch; margin-top: 2px; font-size: 11px; line-height: 1.45; }
 /* contact icons, pinned to the left gutter and fixed, so they stay put while
    the about text scrolls. Visibility is tied to the panel's open state (the
    fixed element would otherwise ignore the panel's clip-path reveal). */
@@ -837,7 +953,10 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
   .v3head__label { display: none; }
   .v3head__main { gap: 12px; }
   .v3head__logo { font-size: 20px; }
+  .v3head__role { display: none; }
   .v3head__nav { gap: 12px; font-size: 10px; }
+
+  .feed__item[data-n="0"] .feed__position { display: block; color: rgba(255, 255, 255, .8); }
 
   .feed {
     display: block;
@@ -887,6 +1006,7 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
   .case3__title { font-size: 32px; }
   .case3__where { text-align: left; }
   .case3__intro, .case3__body, .case3__arch-intro { margin-left: 0; max-width: 100%; }
+  .case3__info { max-width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .case3__essay { padding: 56px var(--edge) 20px; }
   .case3__figure--portrait video,
   .case3__figure--portrait figcaption { width: min(70vw, 400px); }
@@ -900,4 +1020,10 @@ body.is-leaving .foot3 { opacity: 0; transition: opacity .3s ease; }
   .case3__pair .case3__figure:nth-child(2) { margin-top: 0; }
   .case3__nav { flex-direction: column; gap: 32px; }
   .case3__nav a, .case3__nav .next { max-width: 100%; text-align: left; margin-left: 0; }
+}
+
+@media (max-width: 360px) {
+  .v3head__main { gap: 6px; }
+  .v3head__logo { font-size: 16px; }
+  .v3head__nav { gap: 6px; font-size: 8px; }
 }

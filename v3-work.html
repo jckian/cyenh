@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Spectral:ital,wght@1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v3.css" />
+  <link rel="stylesheet" href="v3.css?v=20260916-3" />
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 
   <main class="case3" id="case"></main>
 
-  <script src="v3.js?v=20260915-1"></script>
+  <script src="v3.js?v=20260916-3"></script>
   <script>
     (function () {
       const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -44,6 +44,21 @@
       /* a coverPlaylist replaces the cover: the hero starts on its first clip and cycles */
       const hero = (p.coverPlaylist && p.coverPlaylist[0]) || HERO_OVERRIDE_V3[id] || p.cover;
       const site = SITES_V3[id] || '';
+      const infoRow = (label, value) => value ? `
+        <div class="case3__info-row">
+          <dt>${esc(label)}</dt>
+          <dd>${esc(value)}</dd>
+        </div>` : '';
+      const infoHTML = `
+        <dl class="case3__info">
+          ${infoRow('Period', p.period || p.year)}
+          ${infoRow('Status', p.status)}
+          ${infoRow('Location', site)}
+          ${infoRow(p.orgLabel || 'Studio', p.client)}
+          ${infoRow('Role', p.role)}
+          ${infoRow('Team', p.team)}
+          ${infoRow('Award', p.award)}
+        </dl>`;
 
       const mediaOf = (src, alt) => isVidV3(src)
         ? `<video src="${src}" poster="${posterForV3(src)}" muted loop playsinline preload="none" data-lazyplay></video>`
@@ -67,14 +82,11 @@
         <div class="case3__meta">
           <div class="case3__meta-left">
             <div class="case3__cat">${esc(p.cat)}</div>
-            ${p.team ? `<div class="case3__role">${esc(p.team)}</div>` : ''}
-            ${p.award ? `<div class="case3__award">${esc(p.award)}</div>` : ''}
-            ${p.role ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
+            ${infoHTML}
           </div>
           <div class="case3__meta-main">
             <h1 class="case3__title">${esc(p.title)}</h1>
             <div class="case3__where">
-              ${site ? `<span>${esc(site)}</span>` : ''}
               <span class="yr">${esc(p.year)}</span>
             </div>
           </div>
@@ -92,12 +104,11 @@
         <div class="case3__vtop">
           <div class="case3__vtop-info">
             <div class="case3__cat">${esc(p.cat)}</div>
-            ${p.role ? `<div class="case3__role">${esc(p.role)}</div>` : ''}
             <h1 class="case3__title">${esc(p.title)}</h1>
             <div class="case3__where">
-              ${site ? `<span>${esc(site)}</span>` : ''}
               <span class="yr">${esc(p.year)}</span>
             </div>
+            ${infoHTML}
             ${p.intro ? `<p class="case3__intro reveal">${esc(p.intro)}</p>` : ''}
           </div>
           <figure class="case3__vtop-media">
